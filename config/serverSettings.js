@@ -14,23 +14,12 @@ const { safeGet } = require('safe-utils')
 const devPort = devDefaults(3000)
 const devSsl = devDefaults(false)
 const devUrl = devDefaults('http://localhost:' + devPort)
-const devInnovationApi = devDefaults('http://localhost:3001/api/node?defaultTimeout=10000') // required=true&
 const devSessionKey = devDefaults('node-web.sid')
 const devSessionUseRedis = devDefaults(true)
 const devRedis = devDefaults('redis://localhost:6379/')
-const devLdap = undefined // Do not enter LDAP_URI or LDAP_PASSWORD here, use env_vars
 const devSsoBaseURL = devDefaults('https://login-r.referens.sys.kth.se')
-const devLdapBase = devDefaults('OU=UG,DC=ref,DC=ug,DC=kth,DC=se')
 // END DEFAULT SETTINGS
 
-// These options are fixed for this application
-const ldapOptions = {
-  base: getEnv('LDAP_BASE', devLdapBase),
-  filter: '(ugKthid=KTHID)',
-  filterReplaceHolder: 'KTHID',
-  userattrs: ['displayName', 'mail', 'ugUsername', 'memberOf'],
-  groupattrs: ['cn', 'objectCategory']
-}
 
 module.exports = {
   hostUrl: getEnv('SERVER_HOST_URL', devUrl),
@@ -44,7 +33,7 @@ module.exports = {
 
   // API keys
   apiKey: {
-    nodeApi: getEnv('NODE_API_KEY', devDefaults('1234'))
+    nodeApi: getEnv('API_KEY', devDefaults('1234'))
   },
 
   // Authentication
@@ -54,11 +43,10 @@ module.exports = {
   cas: {
     ssoBaseURL: getEnv('CAS_SSO_URI', devSsoBaseURL)
   },
-  ldap: unpackLDAPConfig('LDAP_URI', getEnv('LDAP_PASSWORD'), devLdap, ldapOptions),
 
   // Service API's
   nodeApi: {
-    nodeApi: unpackNodeApiConfig('NODE_API_URI', devInnovationApi)
+    nodeApi: unpackNodeApiConfig('API_URI', 'https://api-r.referens.sys.kth.se/api/pipeline')
   },
 
   // Cortina
