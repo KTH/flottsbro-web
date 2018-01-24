@@ -25,7 +25,6 @@ const api = nock('http://localhost:3001/api/node')
   .get('/_checkAPIkey')
   .reply(200, {})
 
-  /*
 describe('Index page', function () {
   before((done) => {
     require('../../server/api')
@@ -47,4 +46,3 @@ describe('Index page', function () {
     ctrl.getIndex(req, res, console.log)
   })
 })
-*/
