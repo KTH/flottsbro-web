@@ -7,7 +7,7 @@
  * *************************************************
  *
  */
-const { getEnv, devDefaults, unpackLDAPConfig, unpackRedisConfig, unpackNodeApiConfig } = require('kth-node-configuration')
+const { getEnv, devDefaults, unpackRedisConfig, unpackNodeApiConfig } = require('kth-node-configuration')
 const { safeGet } = require('safe-utils')
 
 // DEFAULT SETTINGS used for dev, if you want to override these for you local environment, use env-vars in .env
@@ -19,7 +19,6 @@ const devSessionUseRedis = devDefaults(true)
 const devRedis = devDefaults('redis://localhost:6379/')
 const devSsoBaseURL = devDefaults('https://login-r.referens.sys.kth.se')
 // END DEFAULT SETTINGS
-
 
 module.exports = {
   hostUrl: getEnv('SERVER_HOST_URL', devUrl),
