@@ -156,6 +156,6 @@ function _robotsTxt(req, res) {
 /* GET /_paths
  * Return all paths for the system
  */
-function _paths(req, res) {
+function _paths (req, res) {
   res.json(getPaths())
 }
