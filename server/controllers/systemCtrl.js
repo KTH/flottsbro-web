@@ -35,14 +35,14 @@ module.exports = {
  * Get request on not found (404)
  * Renders the view 'notFound' with the layout 'exampleLayout'.
  */
-function _notFound(req, res, next) {
+function _notFound (req, res, next) {
   const err = new Error('Not Found: ' + req.originalUrl)
   err.status = 404
   next(err)
 }
 
 // this function must keep this signature for it to work properly
-function _final(err, req, res, next) {
+function _final (err, req, res, next) {
   log.error({ err: err }, 'Unhandled error')
 
   const statusCode = err.status || err.statusCode || 500
@@ -87,7 +87,7 @@ function _getFriendlyErrorMessage(lang, statusCode) {
 /* GET /_about
  * About page
  */
-function _about(req, res) {
+function _about (req, res) {
   res.render('system/about', {
     debug: 'debug' in req.query,
     layout: 'systemLayout',
@@ -110,7 +110,7 @@ function _about(req, res) {
 /* GET /_monitor
  * Monitor page
  */
-function _monitor(req, res) {
+function _monitor (req, res) {
   const apiConfig = config.nodeApi
 
   // Check APIs
@@ -149,7 +149,7 @@ function _monitor(req, res) {
 /* GET /robots.txt
  * Robots.txt page
  */
-function _robotsTxt(req, res) {
+function _robotsTxt (req, res) {
   res.type('text').render('system/robots')
 }
 
