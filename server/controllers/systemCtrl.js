@@ -75,7 +75,7 @@ function _final (err, req, res, next) {
   })
 }
 
-function _getFriendlyErrorMessage(lang, statusCode) {
+function _getFriendlyErrorMessage (lang, statusCode) {
   switch (statusCode) {
     case 404:
       return i18n.message('error_not_found', lang)
