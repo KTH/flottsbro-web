@@ -1,8 +1,8 @@
 {
   "//": "JSHint configuration - http://jshint.com/docs/options/",
-  "name": "node-web",
+  "name": "Flottsbro-web",
   "version": "2.0.0",
-  "description": "Template project for a node express web server",
+  "description": "Display information about applications deployed in our clusters.",
   "main": "app.js",
   "private": true,
   "license": "MIT",

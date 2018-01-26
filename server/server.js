@@ -115,14 +115,6 @@ const { languageHandler } = require('kth-node-web-common/lib/language')
 server.use(config.proxyPrefixPath.uri, languageHandler)
 
 /* ******************************
- * ******* AUTHENTICATION *******
- * ******************************
- */
-
-const authRoute = AppRouter()
-server.use('/', authRoute.getRouter())
-
-/* ******************************
  * ******* CORTINA BLOCKS *******
  * ******************************
  */
@@ -147,10 +139,11 @@ server.use(excludeExpression, require('kth-node-web-common/lib/web/crawlerRedire
  * ******* APPLICATION ROUTES *******
  * **********************************
  */
-const { System, Sample } = require('./controllers')
+const { System, App } = require('./controllers')
 
 // System routes
 const systemRoute = AppRouter()
+console.log("----------------------------- " + config.proxyPrefixPath.uri + '/_monitor' )
 systemRoute.get('system.monitor', config.proxyPrefixPath.uri + '/_monitor', System.monitor)
 systemRoute.get('system.about', config.proxyPrefixPath.uri + '/_about', System.about)
 systemRoute.get('system.paths', config.proxyPrefixPath.uri + '/_paths', System.paths)
@@ -159,7 +152,7 @@ server.use('/', systemRoute.getRouter())
 
 // App routes
 const appRoute = AppRouter()
-appRoute.get('system.index', config.proxyPrefixPath.uri + '/', Sample.getIndex)
+appRoute.get('system.index', config.proxyPrefixPath.uri + '/', App.getIndex)
 server.use('/', appRoute.getRouter())
 
 // Not found etc
