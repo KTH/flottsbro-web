@@ -7,13 +7,13 @@
  * **************************************************
  *
  */
-const { getEnv, devDefaults } = require('kth-node-configuration')
+const { getEnv, devDefaults } = require("kth-node-configuration");
 
-const devPrefixPath = devDefaults('/pipeline')
+const devPrefixPath = devDefaults("/pipeline");
 
 module.exports = {
   // The proxy prefix path if the application is proxied. E.g /places
   proxyPrefixPath: {
-    uri: getEnv('SERVICE_PUBLISH', devPrefixPath)
+    uri: getEnv("SERVICE_PUBLISH", devPrefixPath)
   }
-}
+};

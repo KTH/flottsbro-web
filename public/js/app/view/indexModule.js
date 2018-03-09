@@ -4,8 +4,8 @@
  * to call code in the javascript modules.
  */
 
-var $ = require('jquery')
+var $ = require("jquery");
 
-$(function () {
-  $('h1').text('Flottsbro-web updated from JS')
-})
+$(function() {
+  $("h1").text("Flottsbro-web updated from JS");
+});

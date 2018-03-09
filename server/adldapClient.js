@@ -1,5 +1,5 @@
-const ldap = require('kth-node-ldap')
-const config = require('./configuration').server
+const ldap = require("kth-node-ldap");
+const config = require("./configuration").server;
 
 // ldap client is used to find users and need to be exposed
 module.exports = ldap.createClient({
@@ -12,4 +12,4 @@ module.exports = ldap.createClient({
   checkInterval: config.ldap.checkinterval,
   maxIdleTime: config.ldap.maxidletime,
   reconnect: true
-})
+});

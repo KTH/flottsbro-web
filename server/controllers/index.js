@@ -1,4 +1,4 @@
-'use strict'
+"use strict";
 
 /**
  * Declares all of our different controllers and exposes them
@@ -6,6 +6,6 @@
  */
 
 module.exports = {
-  System: require('./systemCtrl'),
-  App: require('./appCtrl')
-}
+  System: require("./systemCtrl"),
+  App: require("./appCtrl")
+};
