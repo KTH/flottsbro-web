@@ -20,7 +20,7 @@ mockery.enable({
 });
 
 const paths = require("../mocks/apipaths.json");
-const api = nock("http://localhost:3001/api/node")
+const api = nock("http://localhost:3001/api/pipeline")
   .get("/_paths")
   .reply(200, paths)
   .get("/_checkAPIkey")

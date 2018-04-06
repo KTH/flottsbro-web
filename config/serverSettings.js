@@ -19,7 +19,7 @@ const { safeGet } = require("safe-utils");
 const devPort = devDefaults(3000);
 const devSsl = devDefaults(false);
 const devUrl = devDefaults("http://localhost:" + devPort);
-const devSessionKey = devDefaults("node-web.sid");
+const devSessionKey = devDefaults("flottsbro-web.sid");
 const devSessionUseRedis = devDefaults(true);
 const devRedis = devDefaults("redis://localhost:6379/");
 const devSsoBaseURL = devDefaults("https://login-r.referens.sys.kth.se");
@@ -44,7 +44,7 @@ module.exports = {
 
   // Authentication
   auth: {
-    adminGroup: "app.node.admin"
+    adminGroup: "app.pipeline.admin"
   },
   cas: {
     ssoBaseURL: getEnv("CAS_SSO_URI", devSsoBaseURL)

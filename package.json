@@ -35,7 +35,7 @@
     "kth-client-logging": "https://github.com/KTH/kth-client-logging.git#v1.0.0",
     "kth-node-access-log": "^0.2.0",
     "kth-node-api-call": "^1.2.2",
-    "kth-node-configuration": "^1.4.0",
+    "kth-node-configuration": "^1.6.3",
     "kth-node-express-routing": "^0.4.0",
     "kth-node-i18n": "^1.0.2",
     "kth-node-ldap": "^2.0.1",
@@ -70,7 +70,8 @@
     "nodemon": "^1.11.0",
     "pre-push": "^0.1.1",
     "standard": "^10.0.3",
-    "zombie": "5.0.7"
+    "zombie": "5.0.7",
+    "popper": "*"
   },
   "engines": {
     "node": "6.9.1"

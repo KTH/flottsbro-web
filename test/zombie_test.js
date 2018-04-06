@@ -23,7 +23,7 @@ browser.runScripts = false;
 
 describe("navigate to login page", function() {
   before(function(done) {
-    browser.visit("/node/login", done);
+    browser.visit("/flottsbro/login", done);
   });
 
   it("should contain a login form", function() {
