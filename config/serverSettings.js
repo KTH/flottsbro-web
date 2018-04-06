@@ -54,7 +54,7 @@ module.exports = {
   nodeApi: {
     nodeApi: unpackNodeApiConfig(
       "API_URI",
-      "https://api-r.referens.sys.kth.se/api/pipeline"
+      "https://api-r.referens.sys.kth.se/api/pipeline/"
     )
   },
 

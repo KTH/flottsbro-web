@@ -15,7 +15,7 @@ services:
       LDAP_MAX_IDLE_TIME: 300000
 
       # Cellus Deployment
-      SERVICE_PUBLISH : "/pipeline"
+      SERVICE_PUBLISH : "/pipeline/"
 
       # Server settings
       NODE_ENV: "production"
