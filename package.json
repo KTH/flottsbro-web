@@ -1,6 +1,6 @@
 {
   "//": "JSHint configuration - http://jshint.com/docs/options/",
-  "name": "Flottsbro-web",
+  "name": "flottsbro-web",
   "version": "2.0.0",
   "description": "Display information about applications deployed in our clusters.",
   "main": "app.js",
@@ -49,7 +49,8 @@
     "kth-style": "^2.0.0-beta.3",
     "locale": "^0.1.0",
     "passport": "^0.4.0",
-    "safe-utils": "^0.1.1"
+    "safe-utils": "^0.1.1",
+    "popper": "*"
   },
   "devDependencies": {
     "babel-core": "^6.9.0",
