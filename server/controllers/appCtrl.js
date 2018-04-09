@@ -19,9 +19,17 @@ function* getIndex(req, res, next) {
     res.render("app/index", {
       debug: "debug" in req.query,
       data:
-        "resp.statusCode === 200 ? safeGet(() => { return resp.body.name }) : ''",
+        resp.statusCode === 200
+          ? safeGet(() => {
+              return resp.body.name;
+            })
+          : "",
       error:
-        "resp.statusCode !== 200 ? safeGet(() => { return resp.body.message }) : ''"
+        resp.statusCode !== 200
+          ? safeGet(() => {
+              return resp.body.message;
+            })
+          : ""
     });
   } catch (err) {
     log.error("Error in getIndex", { error: err });
