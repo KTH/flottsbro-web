@@ -19,15 +19,15 @@ function* getIndex(req, res, next) {
     res.render("app/index", {
       debug: "debug" in req.query,
       data:
-        resp.statusCode === 200
+        res.statusCode === 200
           ? safeGet(() => {
-              return resp.body.name;
+              return res.body.name;
             })
           : "",
       error:
-        resp.statusCode !== 200
+        res.statusCode !== 200
           ? safeGet(() => {
-              return resp.body.message;
+              return res.body.message;
             })
           : ""
     });
