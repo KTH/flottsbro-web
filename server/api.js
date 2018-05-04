@@ -12,4 +12,4 @@ const opts = {
   checkAPIs: true // performs api-key checks against the apis, if a "required" check fails, the app will exit. Required apis are specified in the config
 };
 
-module.exports = connections.setup(config.nodeApi, config.apiKey, opts);
+module.exports = connections.setup(config.pipelineApi, config.apiKey, opts);

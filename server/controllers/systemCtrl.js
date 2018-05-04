@@ -14,7 +14,9 @@ const api = require("../api");
 const co = require("co");
 const Promise = require("bluebird");
 const registry = require("component-registry").globalRegistry;
-const { IHealthCheck } = require("kth-node-monitor").interfaces;
+const {
+  IHealthCheck
+} = require("kth-node-monitor").interfaces;
 
 /*
  * ----------------------------------------------------------------
@@ -43,7 +45,9 @@ function _notFound(req, res, next) {
 
 // this function must keep this signature for it to work properly
 function _final(err, req, res, next) {
-  log.error({ err: err }, "Unhandled error");
+  log.error({
+    err: err
+  }, `Unhandled error ${err}`);
 
   const statusCode = err.status || err.statusCode || 500;
   const isProd = /prod/gi.test(process.env.NODE_ENV);
@@ -114,7 +118,7 @@ function _about(req, res) {
  * Monitor page
  */
 function _monitor(req, res) {
-  const apiConfig = config.nodeApi;
+  const apiConfig = config.pipelineApi;
 
   // Check APIs
   const subSystems = Object.keys(api).map(apiKey => {
@@ -128,7 +132,10 @@ function _monitor(req, res) {
   // Make sure it returns a promise which resolves with an object containing:
   // {statusCode: ###, message: '...'}
   // The property statusCode should be standard HTTP status codes.
-  const localSystems = Promise.resolve({ statusCode: 200, message: "OK" });
+  const localSystems = Promise.resolve({
+    statusCode: 200,
+    message: "OK"
+  });
 
   /* -- You will normally not change anything below this line -- */
 

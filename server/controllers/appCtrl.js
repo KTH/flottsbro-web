@@ -3,7 +3,9 @@
 const api = require("../api");
 const co = require("co");
 const log = require("kth-node-log");
-const { safeGet } = require("safe-utils");
+const {
+  safeGet
+} = require("safe-utils");
 
 module.exports = {
   getIndex: co.wrap(getIndex)
@@ -11,28 +13,37 @@ module.exports = {
 
 function* getIndex(req, res, next) {
   try {
-    const client = api.nodeApi.client;
-    const paths = api.nodeApi.paths;
-    log.debug(paths);
-    //    const resp = yield client.getAsync(client.resolve(paths.getDataById.uri, { id: '123' }), { useCache: true })
+    console.log(`--------> ${api}`)
+    const paths = api.pipelineApi.paths;
+    console.log(`Paths: ${paths}`);
 
-    res.render("app/index", {
+    const client = api.pipelinapieApi.client;
+
+    const resp = yield client.getAsync(
+      client.resolve(paths.getLatestByClusterName.uri, {
+        clusterName: "stage"
+      }), {
+        useCache: true
+      }
+    );
+
+    res.render("sample/index", {
       debug: "debug" in req.query,
-      data:
-        res.statusCode === 200
-          ? safeGet(() => {
-              return res.body.name;
-            })
-          : "",
-      error:
-        res.statusCode !== 200
-          ? safeGet(() => {
-              return res.body.message;
-            })
-          : ""
+      data: resp.statusCode === 200 ?
+        safeGet(() => {
+          return resp.body.name;
+        }) : "",
+      error: resp.statusCode !== 200 ?
+        safeGet(() => {
+          return resp.body.message;
+        }) : ""
     });
   } catch (err) {
-    log.error("Error in getIndex", { error: err });
+    console.log("---------------------------------------------------------");
+    log.error("Error in getIndex", {
+      error: err
+    });
     next(err);
+    console.log("---------------------------------------------------------");
   }
 }

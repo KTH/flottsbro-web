@@ -15,7 +15,7 @@ services:
       LDAP_MAX_IDLE_TIME: 300000
 
       # Cellus Deployment
-      SERVICE_PUBLISH : "/pipeline/"
+      SERVICE_PUBLISH : "/pipeline"
 
       # Server settings
       NODE_ENV: "production"
@@ -31,10 +31,12 @@ services:
       CM_HOST_URL: "https://www.kth.se/cm/"
 
       # Session options
-      SESSION_KEY: "search-web.sid"
+      SESSION_KEY: "flottsbro-web.sid"
 
     ports:
       - 3000:3000
+      
+    tty: true
 
     # se.kth.cluster=stage sets dockerinfo_labels_se.kth.cluster_s:stage i OMS
     labels:

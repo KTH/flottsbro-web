@@ -80,7 +80,9 @@ function setCustomCacheControl(res, path) {
 // Map components HTML files as static content, but set custom cache control header, currently no-cache to force If-modified-since/Etag check.
 server.use(
   config.proxyPrefixPath.uri + "/static/js/components",
-  express.static("./dist/js/components", { setHeaders: setCustomCacheControl })
+  express.static("./dist/js/components", {
+    setHeaders: setCustomCacheControl
+  })
 );
 // Expose browser configurations
 server.use(
@@ -90,7 +92,7 @@ server.use(
 // Map static content like images, css and js.
 server.use(config.proxyPrefixPath.uri + "/static", express.static("./dist"));
 // Return 404 if static file isn't found so we don't go through the rest of the pipeline
-server.use(config.proxyPrefixPath.uri + "/static", function(req, res, next) {
+server.use(config.proxyPrefixPath.uri + "/static", function (req, res, next) {
   var error = new Error("File not found: " + req.originalUrl);
   error.statusCode = 404;
   next(error);
@@ -107,7 +109,9 @@ server.set("case sensitive routing", true);
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 server.use(bodyParser.json());
-server.use(bodyParser.urlencoded({ extended: true }));
+server.use(bodyParser.urlencoded({
+  extended: true
+}));
 server.use(cookieParser());
 
 /************************
@@ -123,7 +127,9 @@ server.use(session(options));
  * ******* LANGUAGE *******
  * ************************
  */
-const { languageHandler } = require("kth-node-web-common/lib/language");
+const {
+  languageHandler
+} = require("kth-node-web-common/lib/language");
 server.use(config.proxyPrefixPath.uri, languageHandler);
 
 /*******************************
@@ -157,11 +163,15 @@ server.use(
  * ******* APPLICATION ROUTES *******
  * **********************************
  */
-const { System, App } = require("./controllers");
+const {
+  System,
+  App
+} = require("./controllers");
 
 // System routes
 const systemRoute = AppRouter();
 
+console.log(`${config.proxyPrefixPath.uri + "/_monitor"}`)
 systemRoute.get(
   "system.monitor",
   config.proxyPrefixPath.uri + "/_monitor",

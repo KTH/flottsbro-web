@@ -13,7 +13,9 @@ const {
   unpackRedisConfig,
   unpackNodeApiConfig
 } = require("kth-node-configuration");
-const { safeGet } = require("safe-utils");
+const {
+  safeGet
+} = require("safe-utils");
 
 // DEFAULT SETTINGS used for dev, if you want to override these for you local environment, use env-vars in .env
 const devPort = devDefaults(3000);
@@ -39,7 +41,7 @@ module.exports = {
 
   // API keys
   apiKey: {
-    nodeApi: getEnv("API_KEY", devDefaults("1234"))
+    pipelineApi: getEnv("API_KEY", devDefaults("1234"))
   },
 
   // Authentication
@@ -50,11 +52,10 @@ module.exports = {
     ssoBaseURL: getEnv("CAS_SSO_URI", devSsoBaseURL)
   },
 
-  // Service API's
-  nodeApi: {
-    nodeApi: unpackNodeApiConfig(
+  pipelineApi: {
+    pipelineApi: unpackNodeApiConfig(
       "API_URI",
-      "https://api-r.referens.sys.kth.se/api/pipeline/"
+      "https://api-r.referens.sys.kth.se/api/pipeline"
     )
   },
 
