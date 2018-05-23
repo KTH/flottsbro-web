@@ -1,9 +1,65 @@
-{{prefixScript '/static/js/app/view/indexModule.js'}}
+<link href="//www.kth.se/directory/static/css/bootstrap/bootstrap.min.css?v=2.5.4-19" media="all" rel="stylesheet">
+<link href="//www.kth.se/directory/static/css/datatables/dataTables.bootstrap.min.css?v=2.5.4-19" media="all" rel="stylesheet">
+<link href="//www.kth.se/directory/static/css/kth-style/kth-bootstrap-theme.css?v=2.5.4-19" media="all" rel="stylesheet">
+<link href="//www.kth.se/directory/static/css/directory-web.css?v=2.5.4-19" media="all" rel="stylesheet">
 
-<h1>node-web</h1>
+
+
+
+<script src="//www.kth.se/directory/static/js/vendor.js?v=2.5.4-19"></script>
+<script src="//www.kth.se/directory/static/js/datatables/jquery.dataTables.js?v=2.5.4-19"></script>
+<script src="//www.kth.se/social/toolbar/widget.js"></script>
+
+<h1>Applications deployed</h1>
 
 {{#if error}}
-  <p>Error: {{error}}</p>
+
+<p>Error: {{error}}</p>
+
 {{else}}
-  <div id="api-data">{{data}}</div>
+
+<table id="deployments">
+
+  <thead>
+    <tr>
+      <th>Application</th>
+      <th>Version</th>
+      <th>Path</th>
+      <th>Contact</th>
+      <th>Created</th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+    {{#each data}}
+      <tr>
+        <td class="applicationName importance {{this.importance}}">{{this.applicationName}}</td>
+        <td class="version">{{this.version}}</td>
+        <td class="path">{{this.path}}</td>
+        <td class="slackChannels">{{this.slackChannels}}</td>
+        <td class="created">{{this.created}}</td>
+      </tr>
+    {{/each}}
+
+  </tbody>
+</table>
+
 {{/if}}
+
+
+<script>
+  $(function () {
+    // Only run sort script on big screen devices
+    var boostrapTabletBreakpoint = 768
+    if ( $(window).width() > boostrapTabletBreakpoint) {
+      $('#deployments').DataTable({
+        paging: false,
+        info: false,
+        searching: false,
+        order: [ [ 2, 'asc' ] ],
+        columnDefs: []
+      })
+    }
+  })
+</script>

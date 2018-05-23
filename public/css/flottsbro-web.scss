@@ -1,1 +1,17 @@
-// Less code goes here!
+.applicationName {
+    font-weight: bold;   
+}
+
+.importance {
+    &.low {
+      color: gray;
+    }
+    &.medium {
+        color: black;
+    }
+
+    &.high {
+        color: green;
+    }
+  
+}
