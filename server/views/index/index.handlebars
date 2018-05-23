@@ -18,6 +18,19 @@
 
 {{else}}
 
+<p>
+  Is this application important for any form of operations, or support to act upon.
+</p>
+
+<p>
+  <span class="importance high"></span> High
+  <br/>
+  <span class="importance medium"></span> Medium
+  <br/>
+  <span class="importance low"></span> Low
+  <br/>
+</p>
+
 <table id="deployments">
 
   <thead>
@@ -33,31 +46,46 @@
   <tbody>
 
     {{#each data}}
-      <tr>
-        <td class="applicationName importance {{this.importance}}">{{this.applicationName}}</td>
-        <td class="version">{{this.version}}</td>
-        <td class="path">{{this.path}}</td>
-        <td class="slackChannels">{{this.slackChannels}}</td>
-        <td class="created">{{this.created}}</td>
-      </tr>
+    <tr>
+      <td class="applicationName"><span title="Application importance: {{this.importance}}" class="importance {{this.importance}}"></span> {{this.applicationName}}</td>
+      <td class="version">{{this.version}}</td>
+      <td class="path">{{this.path}}</td>
+      <td class="slackChannels">{{this.slackChannels}}</td>
+      <td class="created">{{this.created}}</td>
+    </tr>
     {{/each}}
 
   </tbody>
 </table>
 
-{{/if}}
+{{#each data}}
+
+<div class="application">
+  <h2>{{this.applicationName}}</h2>
+  {{#if this.descriptionSwedish }}
+    <p>{{this.descriptionEnglish}} </p>
+  {{/if}}
+  {{#if this.importance}}
+    <strong>Importance: </strong>{{this.importance}}<br/>
+  {{/if}}
+  {{#if this.slackChannels}}
+    <strong>Responsible team: </strong>{{this.slackChannels}} <br/>
+  {{/if}}
+
+</div>
+{{/each}} {{/if}}
 
 
 <script>
   $(function () {
     // Only run sort script on big screen devices
     var boostrapTabletBreakpoint = 768
-    if ( $(window).width() > boostrapTabletBreakpoint) {
+    if ($(window).width() > boostrapTabletBreakpoint) {
       $('#deployments').DataTable({
         paging: false,
         info: false,
         searching: false,
-        order: [ [ 2, 'asc' ] ],
+        order: [[2, 'asc']],
         columnDefs: []
       })
     }

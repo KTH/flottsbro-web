@@ -1,17 +1,30 @@
-.applicationName {
-    font-weight: bold;   
+.application {
+
+}
+
+#deployments {
+    .applicationName {
+        font-weight: bold;   
+    }
+    
 }
 
 .importance {
+    width: 1rem;
+    height: 1rem;
+    display: inline-block;
+    font-weight: normal;
+  
     &.low {
-      color: gray;
+      background: lightblue;
+      
     }
     &.medium {
-        color: black;
+        background: lightgreen;
     }
 
     &.high {
-        color: green;
+        background: lightcoral;
     }
   
 }

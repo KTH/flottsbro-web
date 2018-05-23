@@ -23,7 +23,7 @@ function* getIndex(req, res, next) {
       }
     );
 
-    console.log(deployments.body)
+    console.log(paths.getLatestByClusterName.uri)
     res.render("index/index", {
       debug: "debug" in req.query,
       data: deployments.body,
