@@ -49,7 +49,7 @@
     <tr>
       <td class="applicationName"><span title="Application importance: {{this.importance}}" class="importance {{this.importance}}"></span> {{this.applicationName}}</td>
       <td class="version">{{this.version}}</td>
-      <td class="path">{{this.path}}</td>
+      <td class="path"><a href="https://app.kth.se{{this.path}}">{{this.path}}</a></td>
       <td class="slackChannels">{{this.slackChannels}}</td>
       <td class="created">{{this.created}}</td>
     </tr>
@@ -65,6 +65,7 @@
   {{#if this.descriptionSwedish }}
     <p>{{this.descriptionEnglish}} </p>
   {{/if}}
+  <strong>Website:</strong> <a href="https://app.kth.se{{this.path}}">https://app.kth.se{{this.path}}</a><br />
   {{#if this.importance}}
     <strong>Importance: </strong>{{this.importance}}<br/>
   {{/if}}
