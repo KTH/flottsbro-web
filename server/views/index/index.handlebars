@@ -51,7 +51,11 @@
 
     {{#each data}}
     <tr>
-      <td class="applicationName"><span title="Application importance: {{this.importance}}" class="importance {{this.importance}}"></span> {{this.applicationName}}</td>
+      {{#if this.publicNameEnglish}}
+      <td class="applicationName"><span title="Application importance: {{this.importance}}" class="importance {{this.importance}}"></span> <a href="#{{this.applicationName}}">{{this.publicNameEnglish}}</a></td>
+    {{else}}
+      <td class="applicationName"><span title="Application importance: {{this.importance}}" class="importance {{this.importance}}"></span> <a href="#{{this.applicationName}}">{{this.applicationName}}</a></td>
+    {{/if}}
       {{#if this.monitorUrl}}
         <td class="path"><a href="{{this.monitorUrl}}">{{this.path}}</a></td>
       {{else}}
@@ -75,13 +79,21 @@
 {{#each data}}
 
 <div class="application">
-  <h3>{{this.applicationName}}</h3> 
-    {{#if this.descriptionEnglish }}
+  <a name="{{this.applicationName}}"></a>
+  {{#if this.publicNameEnglish}}
+   <h3>{{this.publicNameEnglish}}</h3> 
+  {{else}}
+    <h3>{{this.applicationName}}</h3> 
+  {{/if}}
+
+  {{#if this.publicNameSwedish}}
+    <strong>Svenskt namn:</strong> {{this.publicNameSwedish}}<br /> 
+  {{/if}}
+
+  {{#if this.descriptionEnglish }}
     <p>{{this.descriptionEnglish}} </p>
   {{/if}}
-  {{#if this.descriptionSwedish }}
-    <p>{{this.descriptionSwedish}}</p>
-  {{/if}}
+
   <strong>Website:</strong> <a href="https://app.kth.se{{this.path}}">https://app.kth.se{{this.path}}</a><br />
   <strong>Version: </strong>: {{this.version}}<br/>
   {{#if this.importance}}

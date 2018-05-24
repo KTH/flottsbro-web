@@ -32,6 +32,7 @@ function* getIndex(req, res, next) {
       }
     );
 
+    console.log(deployments)
     res.render("index/index", {
       debug: "debug" in req.query,
       data: deployments.body,
