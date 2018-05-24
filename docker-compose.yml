@@ -8,31 +8,15 @@ services:
     build: .
     environment:
       WEB_VERSION: "^0.2.0"
-
-      # Test settings for LDAP
       LDAP_TIMEOUT: 3000
       LDAP_CONNECT_TIMEOUT: 3000
       LDAP_MAX_IDLE_TIME: 300000
-
-      # Cellus Deployment
       SERVICE_PUBLISH : "/pipeline"
-
-      # Server settings
       NODE_ENV: "production"
-
-      # External server address.
       SERVER_HOST_URL: "https://app-r.referens.sys.kth.se"
-
-      # CAS uri
       CAS_SSO_URI: "https://login-r.referens.sys.kth.se"
-
-      # CM host
-      # CM_HOST_URL: "https://www-r.referens.sys.kth.se/cm/"
       CM_HOST_URL: "https://www.kth.se/cm/"
-
-      # Session options
       SESSION_KEY: "flottsbro-web.sid"
-
       DISPLAY_APPS_IN_CLUSTER: "stage"
       
     ports:
@@ -40,7 +24,6 @@ services:
       
     tty: true
 
-    # se.kth.cluster=stage sets dockerinfo_labels_se.kth.cluster_s:stage i OMS
     labels:
       - se.kth.monitorUrl=https://app.kth.se/pipeline/_monitor
       - se.kth.cluster=stage
@@ -49,4 +32,3 @@ services:
       - se.kth.publicName.english="Flottsbro-web"
       - se.kth.description.swedish="Visar information om applikationer som körs i våra kluster."
       - se.kth.description.english="Displays information about applications deployed in our clusters."
-      
