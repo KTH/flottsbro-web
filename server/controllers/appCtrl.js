@@ -11,19 +11,28 @@ module.exports = {
   getIndex: co.wrap(getIndex)
 };
 
+function getClusterName()  {
+  if (process.env.DISPLAY_APPS_IN_CLUSTER) {
+    return process.env.DISPLAY_APPS_IN_CLUSTER;
+  }
+
+  return "active";
+}
+
 function* getIndex(req, res, next) {
   try {
     const client = api.pipelineApi.client;
     const paths = api.pipelineApi.paths;
     const deployments = yield client.getAsync(
       client.resolve(paths.getLatestByClusterName.uri, {
-        clusterName: "active"
+        clusterName: getClusterName()
       }), {
         useCache: true
       }
     );
 
-    console.log(paths.getLatestByClusterName.uri)
+    console.log(deployments)
+
     res.render("index/index", {
       debug: "debug" in req.query,
       data: deployments.body,

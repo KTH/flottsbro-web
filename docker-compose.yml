@@ -33,6 +33,8 @@ services:
       # Session options
       SESSION_KEY: "flottsbro-web.sid"
 
+      DISPLAY_APPS_IN_CLUSTER: "stage"
+      
     ports:
       - 3000:3000
       
@@ -41,7 +43,7 @@ services:
     # se.kth.cluster=stage sets dockerinfo_labels_se.kth.cluster_s:stage i OMS
     labels:
       - se.kth.monitorUrl=https://app.kth.se/pipeline/_monitor
-      - se.kth.cluster=active
+      - se.kth.cluster=stage
       - se.kth.slackChannels="#team-pipeline-build,#pipeline-logs"
       - se.kth.publicName.swedish="Flottsbro-web"
       - se.kth.publicName.english="Flottsbro-web"

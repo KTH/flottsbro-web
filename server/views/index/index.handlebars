@@ -10,26 +10,29 @@
 <script src="//www.kth.se/directory/static/js/datatables/jquery.dataTables.js?v=2.5.4-19"></script>
 <script src="//www.kth.se/social/toolbar/widget.js"></script>
 
-<h1>Applications deployed</h1>
-
+<h1>KTH Web applications</h1>
 {{#if error}}
-
-<p>Error: {{error}}</p>
-
+<div aria-live="polite" role="alert" class="alert alert-danger">
+      <p><strong>Opps this is not suppose to happen...</strong></p>
+      <p>{{error}}</p>
+  </div>
 {{else}}
 
-<p>
-  Is this application important for any form of operations, or support to act upon.
-</p>
+<p>These are the applications developted and deployd at the KTH IT-department.</p>
+<h2>Something not working?</h2>
+<p>All the applications bellow are monotored publicly. See if there is any <a href="https://www.kthstatus.se/">disturbance for your service</a>.</p>
 
-<p>
-  <span class="importance high"></span> High
-  <br/>
-  <span class="importance medium"></span> Medium
-  <br/>
-  <span class="importance low"></span> Low
-  <br/>
-</p>
+<div aria-live="polite" role="alert" class="alert alert-info">
+  <p>
+    Is this application important for any form of operations, or support to act upon.
+  </p>
+
+  <p>
+    <span class="importance high"></span> High<br/>
+    <span class="importance medium"></span> Medium<br/>
+    <span class="importance low"></span> Low<br/>
+  </p>
+</div>
 
 <table id="deployments">
 
@@ -49,7 +52,11 @@
     <tr>
       <td class="applicationName"><span title="Application importance: {{this.importance}}" class="importance {{this.importance}}"></span> {{this.applicationName}}</td>
       <td class="version">{{this.version}}</td>
-      <td class="path"><a href="https://app.kth.se{{this.path}}">{{this.path}}</a></td>
+      {{#if this.monitorUrl}}
+        <td class="path"><a href="{{this.monitorUrl}}">{{this.path}}</a></td>
+      {{else}}
+        <td class="path"><a href="https://app.kth.se{{this.path}}">{{this.path}}</a></td>
+      {{/if}}
       <td class="slackChannels">{{this.slackChannels}}</td>
       <td class="created">{{this.created}}</td>
     </tr>
