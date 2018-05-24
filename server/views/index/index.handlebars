@@ -9,8 +9,10 @@
 <script src="//www.kth.se/directory/static/js/vendor.js?v=2.5.4-19"></script>
 <script src="//www.kth.se/directory/static/js/datatables/jquery.dataTables.js?v=2.5.4-19"></script>
 <script src="//www.kth.se/social/toolbar/widget.js"></script>
+<script src="//momentjs.com/downloads/moment.min.js"></script>
 
 <h1>KTH Web applications</h1>
+
 {{#if error}}
 <div aria-live="polite" role="alert" class="alert alert-danger">
       <p><strong>Opps this is not suppose to happen...</strong></p>
@@ -39,10 +41,9 @@
   <thead>
     <tr>
       <th>Application</th>
-      <th>Version</th>
       <th>Path</th>
+      <th>Deployed</th>
       <th>Contact</th>
-      <th>Created</th>
     </tr>
   </thead>
 
@@ -51,28 +52,38 @@
     {{#each data}}
     <tr>
       <td class="applicationName"><span title="Application importance: {{this.importance}}" class="importance {{this.importance}}"></span> {{this.applicationName}}</td>
-      <td class="version">{{this.version}}</td>
       {{#if this.monitorUrl}}
         <td class="path"><a href="{{this.monitorUrl}}">{{this.path}}</a></td>
       {{else}}
         <td class="path"><a href="https://app.kth.se{{this.path}}">{{this.path}}</a></td>
       {{/if}}
+      <td class="created"><span id="created{{@index}}">{{this.created}}</span></td>
       <td class="slackChannels">{{this.slackChannels}}</td>
-      <td class="created">{{this.created}}</td>
     </tr>
+    <script>
+      
+      document.getElementById("created{{@index}}").innerHTML = moment.unix({{this.created}}).fromNow()
+
+    </script>
+
     {{/each}}
 
   </tbody>
 </table>
 
+<h2>Extended information about the listed services</h2>
 {{#each data}}
 
 <div class="application">
-  <h2>{{this.applicationName}}</h2>
-  {{#if this.descriptionSwedish }}
+  <h3>{{this.applicationName}}</h3> 
+    {{#if this.descriptionEnglish }}
     <p>{{this.descriptionEnglish}} </p>
   {{/if}}
+  {{#if this.descriptionSwedish }}
+    <p>{{this.descriptionSwedish}}</p>
+  {{/if}}
   <strong>Website:</strong> <a href="https://app.kth.se{{this.path}}">https://app.kth.se{{this.path}}</a><br />
+  <strong>Version: </strong>: {{this.version}}<br/>
   {{#if this.importance}}
     <strong>Importance: </strong>{{this.importance}}<br/>
   {{/if}}
@@ -80,6 +91,7 @@
     <strong>Responsible team: </strong>{{this.slackChannels}} <br/>
   {{/if}}
 
+  <hr />
 </div>
 {{/each}} {{/if}}
 

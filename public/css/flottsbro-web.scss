@@ -1,5 +1,6 @@
 .application {
 
+    &nth-
 }
 
 #deployments {
@@ -14,6 +15,9 @@
     height: 1rem;
     display: inline-block;
     font-weight: normal;
+    .hide {
+        display: none;
+    }
   
     &.low {
       background: lightblue;

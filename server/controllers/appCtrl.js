@@ -3,6 +3,7 @@
 const api = require("../api");
 const co = require("co");
 const log = require("kth-node-log");
+const moment = require("moment");
 const {
   safeGet
 } = require("safe-utils");
@@ -30,8 +31,6 @@ function* getIndex(req, res, next) {
         useCache: true
       }
     );
-
-    console.log(deployments)
 
     res.render("index/index", {
       debug: "debug" in req.query,
