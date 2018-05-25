@@ -12,20 +12,23 @@
     height: 1rem;
     display: inline-block;
     font-weight: normal;
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px #ccc;
+    background: ddd;
+
     .hide {
         display: none;
     }
   
     &.low {
-      background: lightblue;
       
     }
     &.medium {
-        background: lightgreen;
+        background: #fab919;
     }
 
     &.high {
-        background: lightcoral;
+        background: #e4363e;
     }
   
 }
