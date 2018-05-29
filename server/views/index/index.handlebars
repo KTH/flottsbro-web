@@ -11,7 +11,7 @@
 <script src="//www.kth.se/social/toolbar/widget.js"></script>
 <script src="//momentjs.com/downloads/moment.min.js"></script>
 
-<h1>KTH Web applications</h1>
+<h1>CD pipeline deployments</h1>
 
 {{#if error}}
 <div aria-live="polite" role="alert" class="alert alert-danger">
@@ -20,7 +20,7 @@
   </div>
 {{else}}
 
-<p>These are the applications developted and deployd at the KTH IT-department using our CD pipeline.</p>
+<p>These are the services developted by the KTH IT-department using our CD pipeline. (These are not all our services :) </p>
 
 <h2>Something not working?</h2>
 <p>All the applications bellow are monotored publicly. See if there is any <a href="https://www.kthstatus.se/">disturbance for your service</a>.</p>
@@ -99,6 +99,10 @@
 
   <strong>Website:</strong> <a href="https://app.kth.se{{this.path}}">https://app.kth.se{{this.path}}</a><br />
   <strong>Version: </strong>: {{this.version}}<br/>
+
+  {{#equal this.path "api"}}
+    API documentaion: <a href="https://app.kth.se{{this.path}}/_swagger">{{this.path}}/_swagger</a>
+  {{/equal}}
   {{#if this.importance}}
     <strong>Importance:</strong> <span title="Application importance: {{this.importance}}" class="importance {{this.importance}}"></span> {{this.importance}}<br/>
   {{/if}}
