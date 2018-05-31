@@ -23,7 +23,7 @@
 <p>These are the services developted by the KTH IT-department using our CD pipeline. (These are not all our services :) </p>
 
 <h2>Something not working?</h2>
-<p>All the applications below are monitored, and you can see there status <a href="https://www.kthstatus.se/">for your service</a>.</p>
+<p>All our services are monitored, see <a href="https://www.kthstatus.se/">there status here</a>.</p>
 <p>For more information about larger outages, please look at the <a href="https://www.kth.se/en/gemensamt/driftsinformation-webbtjanster/ug-rss">IT-support pages.</a></p>
 
 <div aria-live="polite" role="alert" class="alert alert-info">
@@ -84,9 +84,9 @@
 <div class="application">
   <a name="{{this.applicationName}}"></a>
   {{#if this.publicNameEnglish}}
-   <h3>{{this.publicNameEnglish}} - {{this.applicationName}}</h3> 
+   <h3>{{this.publicNameEnglish}} <span class="applicationName"> - {{this.applicationName}}</span></h3> 
   {{else}}
-    <h3>{{this.applicationName}} - {{this.applicationName}}</h3> 
+    <h3>{{this.applicationName}}</h3> 
   {{/if}}
 
   {{#if this.publicNameSwedish}}
