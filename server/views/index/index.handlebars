@@ -42,9 +42,9 @@
     {{#each data}}
     <tr>
       {{#if this.publicNameEnglish}}
-      <td class="applicationName"><span title="Application importance: {{this.importance}}" class="importance {{this.importance}}"></span> <a href="#{{this.applicationName}}">{{this.publicNameEnglish}}</a></td>
+      <td class="applicationName"><span title="Incident Response Time: {{this.importance}}" class="importance {{this.importance}}"></span> <a href="#{{this.applicationName}}">{{this.publicNameEnglish}}</a></td>
     {{else}}
-      <td class="applicationName"><span title="Application importance: {{this.importance}}" class="importance {{this.importance}}"></span> <a href="#{{this.applicationName}}">{{this.applicationName}}</a></td>
+      <td class="applicationName"><span title="Incident Response Time: {{this.importance}}" class="importance {{this.importance}}"></span> <a href="#{{this.applicationName}}">{{this.applicationName}}</a></td>
     {{/if}}
       {{#if this.monitorUrl}}
         <td class="path"><a href="{{this.monitorUrl}}">{{this.path}}</a></td>
