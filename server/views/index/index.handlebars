@@ -100,7 +100,7 @@
     <p>{{this.descriptionEnglish}} </p>
   {{/if}}
 
-  <strong>Website:</strong> <a href="https://app.kth.se{{this.path}}">https://app.kth.se{{this.path}}</a><br />
+  <strong>Website:</strong> <a href="{{this.monitorUrl}}">{{this.monitorUrl}}</a><br />
   <strong>Version: </strong>: {{this.version}}<br/>
   {{#if this.importance}}
     <strong>Incident Response Time:</strong> <span title="Application importance: {{this.importance}}" class="importance {{this.importance}}"></span> {{this.importance}}<br/>
