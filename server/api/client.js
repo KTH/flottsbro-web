@@ -7,10 +7,10 @@ module.exports.pipeline = new BasicAPI({
   hostname: config.pipelineApi,
   https: true,
   json: true,
-  defaultTimeout: 10000,
+  defaultTimeout: 50000,
   redis: {
     client: redisClient,
     prefix: "pipeline",
-    expire: 11000
+    expire: 200000
   }
 });

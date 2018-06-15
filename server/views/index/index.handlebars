@@ -1,13 +1,3 @@
-<link href="//www.kth.se/directory/static/css/bootstrap/bootstrap.min.css?v=2.5.4-19" media="all" rel="stylesheet">
-<link href="//www.kth.se/directory/static/css/datatables/dataTables.bootstrap.min.css?v=2.5.4-19" media="all" rel="stylesheet">
-<link href="//www.kth.se/directory/static/css/kth-style/kth-bootstrap-theme.css?v=2.5.4-19" media="all" rel="stylesheet">
-<link href="//www.kth.se/directory/static/css/directory-web.css?v=2.5.4-19" media="all" rel="stylesheet">
-
-
-
-
-<script src="//www.kth.se/directory/static/js/vendor.js?v=2.5.4-19"></script>
-<script src="//www.kth.se/directory/static/js/datatables/jquery.dataTables.js?v=2.5.4-19"></script>
 <script src="//www.kth.se/social/toolbar/widget.js"></script>
 <script src="//momentjs.com/downloads/moment.min.js"></script>
 
@@ -100,7 +90,7 @@
     <p>{{this.descriptionEnglish}} </p>
   {{/if}}
 
-  <strong>Website:</strong>  {{#if this.monitorUrl}}<a href="{{this.monitorUrl}}">{{this.path}}</a> {{else}} <a href="https://app.kth.se{{this.path}}">https://app.kth.se{{this.path}}</a> {{/if}}<br />
+  <strong>Website:</strong>  {{#if this.monitorUrl}}<a href="{{this.monitorUrl}}">{{this.monitorUrl}}</a> {{else}} <a href="https://app.kth.se{{this.path}}">https://app.kth.se{{this.path}}</a> {{/if}}<br />
   <strong>Version: </strong>: {{this.version}}<br/>
   {{#if this.importance}}
     <strong>Incident Response Time:</strong> <span title="Application importance: {{this.importance}}" class="importance {{this.importance}}"></span> {{this.importance}}<br/>

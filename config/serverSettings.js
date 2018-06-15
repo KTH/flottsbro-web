@@ -52,19 +52,20 @@ module.exports = {
     ssoBaseURL: getEnv("CAS_SSO_URI", devSsoBaseURL)
   },
 
-  pipelineApi: {
+  nodeApi: {
     pipelineApi: unpackNodeApiConfig(
       "API_URI",
       "https://api-r.referens.sys.kth.se/api/pipeline"
     )
   },
 
+
   // Cortina
   blockApi: {
-    blockUrl: getEnv(
-      "SERVER_HOST_URL",
-      devDefaults("https://www-r.referens.sys.kth.se/cm/")
-    ) // Block API base URL
+    blockUrl: getEnv('CM_HOST_URL', devDefaults('https://www-r.referens.sys.kth.se/cm/')), // Block API base URL
+    headers: {
+      'User-Agent': getEnv('CM_USER_AGENT', devDefaults('kth')) // Set User-Agent as an access token when fetching Cortina Blocks
+    }
   },
 
   // Logging
@@ -73,15 +74,20 @@ module.exports = {
       level: getEnv("LOGGING_LEVEL", "debug")
     },
     accessLog: {
-      useAccessLog: getEnv("LOGGING_ACCESS_LOG", true)
+      useAccessLog: getEnv("LOGGING_ACCESS_LOG", false)
     }
   },
   clientLogging: {
-    level: "debug"
+    level: "warn"
   },
+
   cache: {
     cortinaBlock: {
-      redis: unpackRedisConfig("REDIS_URI", devRedis)
+      redis: unpackRedisConfig('REDIS_URI', devRedis)
+    },
+    pipelineApi: {
+      redis: unpackRedisConfig('REDIS_URI', devRedis),
+      expireTime: 60000
     }
   },
 
