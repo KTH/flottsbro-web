@@ -11,6 +11,6 @@ module.exports.pipeline = new BasicAPI({
   redis: {
     client: redisClient,
     prefix: "pipeline",
-    expire: 3600
+    expire: 11000
   }
 });
