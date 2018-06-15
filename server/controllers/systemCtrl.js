@@ -109,7 +109,7 @@ function _about(req, res) {
  * Monitor page
  */
 function _monitor(req, res) {
-  const apiConfig = config.pipelineApi;
+  const apiConfig = config.nodeApi;
 
   // Check APIs
   const subSystems = Object.keys(api).map(apiKey => {
