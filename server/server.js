@@ -190,10 +190,15 @@ systemRoute.get(
 systemRoute.get("system.robots", "/robots.txt", System.robotsTxt);
 server.use("/", systemRoute.getRouter());
 
+
 // App routes
 const appRoute = AppRouter();
 appRoute.get("system.index", config.proxyPrefixPath.uri + "/", App.getIndex);
 server.use("/", appRoute.getRouter());
+
+server.get("/favicon.ico", function (req, res) {
+  res.send("");
+});
 
 // Not found etc
 server.use(System.notFound);
