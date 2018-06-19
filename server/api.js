@@ -5,11 +5,13 @@ const config = require("./configuration").server;
 const redis = require("kth-node-redis");
 const connections = require("kth-node-api-call").Connections;
 
-const opts = {
+const options = {
   log: log,
   redis: redis,
-  timeout: 30000,
-  checkAPIs: true // performs api-key checks against the apis, if a "required" check fails, the app will exit. Required apis are specified in the config
+  timeout: 30 * 1000,
+  defaultTimeout: 10 * 1000,
+  checkAPIs: true, // performs api-key checks against the apis, if a "required" check fails, the app will exit. Required apis are specified in the config
+  reconnectTimeout: 5000, // milliseconds
 };
 
-module.exports = connections.setup(config.nodeApi, config.apiKey, opts);
+module.exports = connections.setup(config.nodeApi, config.apiKey, options);
