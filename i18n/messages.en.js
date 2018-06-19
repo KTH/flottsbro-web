@@ -13,12 +13,12 @@ module.exports = {
      */
 
     error_not_found: 'Sorry, we can\'t find your requested page',
-    error_generic: 'Something went wrong on the server, please try again later.',
+    error_generic: 'Opps this is our fault, please try again later.',
 
     /**
      * Message keys
      */
-    service_name: 'Node application name',
+    service_name: 'Deployments',
 
     example_message_key: 'This is an english translation of a label',
 
@@ -30,6 +30,7 @@ module.exports = {
     field_label_post_example: 'My modelData(Response from api call POST): ',
 
     lang_block_id: '1.77273',
+    locale_text: ' ',
 
     site_name: 'Deployments',
     host_name: 'KTH'
