@@ -1,7 +1,7 @@
 <script src="//www.kth.se/social/toolbar/widget.js"></script>
 <script src="//momentjs.com/downloads/moment.min.js"></script>
 
-<h1>CD pipeline deployments</h1>
+<h1>CD Pipeline dDeployments</h1>
 
 {{#if error}}
 <div aria-live="polite" role="alert" class="alert alert-danger">
@@ -12,7 +12,7 @@
 
 <p>These are the services developted by the KTH IT-department using our CD pipeline. (These are not all our services :) </p>
 
-<h2>Something not working?</h2>
+<h2>Is something not working?</h2>
 <p>All our services are monitored, see <a href="https://www.kthstatus.se/">there status here</a>.</p>
 <p>For more information about larger outages, please look at the <a href="https://www.kth.se/en/gemensamt/driftsinformation-webbtjanster/ug-rss">IT-support pages.</a></p>
 
@@ -32,9 +32,9 @@
     {{#each data}}
     <tr>
       {{#if this.publicNameEnglish}}
-      <td class="applicationName"><span title="Incident Response Time: {{this.importance}}" class="importance {{this.importance}}"></span> <a href="#{{this.applicationName}}">{{this.publicNameEnglish}}</a></td>
+      <td class="applicationName"><a href="#irt"><span title="Incident Response Time: {{this.importance}}" class="importance {{this.importance}}"></span></a> <a href="#{{this.applicationName}}">{{this.publicNameEnglish}}</a></td>
     {{else}}
-      <td class="applicationName"><span title="Incident Response Time: {{this.importance}}" class="importance {{this.importance}}"></span> <a href="#{{this.applicationName}}">{{this.applicationName}}</a></td>
+      <td class="applicationName"><a href="#irt"><span title="Incident Response Time: {{this.importance}}" class="importance {{this.importance}}"></span></a> <a href="#{{this.applicationName}}">{{this.applicationName}}</a></td>
     {{/if}}
       {{#if this.monitorUrl}}
         <td class="path"><a href="{{this.monitorUrl}}">{{this.path}}</a></td>
@@ -55,17 +55,18 @@
   </tbody>
 </table>
 
+<a name="irt"></a>
 <h2>Incident Response Time</h2>
   <p>
-    The coloured circles is a classification of each service importance for any form of operations,
-    or support to act upon. It also tells you as a user how long before a disturbance is fixed.
+    The coloured circles is a classification of each service importance.
+    It indicates how fast the Operations or Support team start workign on the service incase of an outage.
   </p>
 
 <div aria-live="polite" role="alert" class="alert alert-info">
 
   <p>
     <span class="importance high"></span> High <span class="alert-info-texst" >- Actively monitored by operations personal during office hours. Operations are on call until midnight. Action to bring back the service is normally taken within 15 minutes.</span><br/>
-    <span class="importance medium"></span> Medium <span class="alert-info-texst" >- Actively monitored by operations personal during office hours. The service is normally back within 2 hours.</span><br/>
+    <span class="importance medium"></span> Medium <span class="alert-info-texst" >- Actively monitored by operations personal during office hours. The service is normally back within 2 hours, or the following morning.</span><br/>
     <span class="importance low"></span> Low <span class="alert-info-texst" >- The service is normally back within a day.</span><br/>
   </p>
 </div>
