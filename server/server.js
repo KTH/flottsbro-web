@@ -171,7 +171,6 @@ const {
 // System routes
 const systemRoute = AppRouter();
 
-console.log(`${config.proxyPrefixPath.uri + "/_monitor"}`)
 systemRoute.get(
   "system.monitor",
   config.proxyPrefixPath.uri + "/_monitor",

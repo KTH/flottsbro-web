@@ -9,7 +9,7 @@ const options = {
   log: log,
   redis: redis,
   timeout: 30 * 1000,
-  defaultTimeout: 10 * 1000,
+  defaultTimeout: 9 * 1000,
   checkAPIs: true, // performs api-key checks against the apis, if a "required" check fails, the app will exit. Required apis are specified in the config
   reconnectTimeout: 5000, // milliseconds
 };
