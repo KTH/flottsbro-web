@@ -1,4 +1,6 @@
 <script src="//momentjs.com/downloads/moment.min.js"></script>
+<script src="//cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="//cdn.datatables.net/1.10.18/css/jquery.dataTables.min.css">
 
 <h1>CD Pipeline Deployments</h1>
 
@@ -106,9 +108,7 @@
 
 <script>
   $(function () {
-    // Only run sort script on big screen devices
-    var boostrapTabletBreakpoint = 768
-    if ($(window).width() > boostrapTabletBreakpoint) {
+    if ($(window).width() > 768) {
       $('#deployments').DataTable({
         paging: false,
         info: false,
