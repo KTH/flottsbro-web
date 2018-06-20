@@ -93,7 +93,7 @@
   <strong>Website:</strong>  {{#if this.monitorUrl}}<a href="{{this.monitorUrl}}">{{this.monitorUrl}}</a> {{else}} <a href="https://app.kth.se{{this.path}}">https://app.kth.se{{this.path}}</a> {{/if}}<br />
   <strong>Version: </strong>: {{this.version}}<br/>
   {{#if this.importance}}
-    <strong>Incident Response Time:</strong> <span title="Application importance: {{this.importance}}" class="importance {{this.importance}}"></span> {{this.importance}}<br/>
+    <strong>Incident response time:</strong> <span title="Application importance: {{this.importance}}" class="importance {{this.importance}}"></span> {{this.importance}}<br/>
   {{/if}}
   {{#if this.slackChannels}}
     <strong>Responsible team: </strong>{{this.slackChannels}} <br/>
