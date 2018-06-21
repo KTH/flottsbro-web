@@ -19,26 +19,30 @@ h3 {
     display: inline-block;
     font-weight: normal;
     border-radius: 10px;
-    box-shadow: 1px 1px 1px #ccc;
-    background: ddd;
+    box-shadow: 1px 1px 1px #cccccc;
+    background: #ddd;
 
     .hide {
         display: none;
     }
   
     &.low {
-        background: #ffffff;
+        background: #dddddd;
     }
     &.medium {
-        background: #fab919;
+        background: #24a0d8;
     }
 
     &.high {
-        background: #e4363e;
+        background: #d85497;
     }
   
 }
 
 .alert-info-text {
     color: black;
+}
+
+.irt-text {
+    display: none;
 }

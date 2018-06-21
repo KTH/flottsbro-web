@@ -11,10 +11,10 @@
   </div>
 {{else}}
 
-<p>These are the services developted by the KTH IT-department using our CD pipeline. (These are not all our services :) </p>
+<p>These are the web and rest-apis developed by KTH´s IT-department, and deployed using our CD pipeline. </p>
 
 <h2>Is something not working?</h2>
-<p>All our services are monitored, see <a href="https://www.kthstatus.se/">the current services status here</a>.</p>
+<p>Have a look at our list of monitored public web services, <a href="https://www.kthstatus.se/">and there status here</a>, to see if they are working as intended.</p>
 <p>For more information about larger outages, please look at the <a href="https://www.kth.se/en/gemensamt/driftsinformation-webbtjanster/ug-rss">IT-Support pages.</a></p>
 
 <table id="deployments">
@@ -24,6 +24,7 @@
       <th>Application</th>
       <th>Path</th>
       <th>Updated</th>
+      <th>Responsible team: </th>
     </tr>
   </thead>
 
@@ -42,6 +43,7 @@
         <td class="path"><a href="https://app.kth.se{{this.path}}">{{this.path}}</a></td>
       {{/if}}
       <td class="created"><span style="display: none">{{this.created}}</span><span id="created{{@index}}">{{this.created}}</span></td>
+      <td class="created">{{this.slackChannels}}</td>
     </tr>
     <script>
       
@@ -64,10 +66,11 @@
 <div aria-live="polite" role="alert" class="alert alert-info">
 
   <p>
-    <span class="importance high"></span> High <span class="alert-info-text" >- Actively monitored by operations personal during office hours. Operations are on call until midnight. Action to bring back the service is normally taken within 15 minutes.</span><br/>
-    <span class="importance medium"></span> Medium <span class="alert-info-text" >- Actively monitored by operations personal during office hours. The service is normally back within 2 hours. Outages outside office hours are handled the following morning.</span><br/>
+    <span class="importance high"></span> High <span class="alert-info-text" >- Actively monitored by operations personal during office hours. Operations are on call until midnight. Action to bring back the service is normally taken within 15 minutes during office hours.</span><br/>
+    <span class="importance medium"></span> Medium <span class="alert-info-text" >- Actively monitored by operations personal during office hours. Action to bring back the service is normally within 2 hours. Outages outside office hours are handled the following morning.</span><br/>
     <span class="importance low"></span> Low <span class="alert-info-text" >- The service is normally back within a day.</span><br/>
   </p>
+  <p>Read more about <a href="https://www.kth.se/it/tjansteutbud/beredskap-1.681065"> KTH`s on call policy (In Swedish)</a>.</p>
 </div>
 
 
