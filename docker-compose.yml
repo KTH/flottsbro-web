@@ -3,21 +3,21 @@ version: '3'
 services:
   web:
     env_file:
-      - secrets.decrypted.env
-    #image: kthregistryv2.sys.kth.se/search-web:${WEB_VERSION}
+      - .env
+    
     build: .
+    
     environment:
-      WEB_VERSION: "^0.2.0"
       LDAP_TIMEOUT: 3000
       LDAP_CONNECT_TIMEOUT: 3000
       LDAP_MAX_IDLE_TIME: 300000
       SERVICE_PUBLISH : "/pipeline"
       NODE_ENV: "production"
-      SERVER_HOST_URL: "https://app-r.referens.sys.kth.se"
+      SERVER_HOST_URL: "http://localhost:3000"
       CAS_SSO_URI: "https://login-r.referens.sys.kth.se"
       CM_HOST_URL: "https://www.kth.se/cm/"
       SESSION_KEY: "flottsbro-web.sid"
-      DISPLAY_APPS_IN_CLUSTER: "stage"
+      DISPLAY_APPS_IN_CLUSTER: "active"
       
     ports:
       - 3000:3000
