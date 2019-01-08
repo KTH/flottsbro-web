@@ -70,15 +70,5 @@
   },
   "jshintConfig": {
     "maxerr": 5
-  },
-  "standard": {
-    "ignore": [
-      "public/js/lib"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-push": "npm run codecheck && npm run test"
-    }
   }
 }
