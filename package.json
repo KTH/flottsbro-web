@@ -13,8 +13,6 @@
   },
   "scripts": {
     "test": "NODE_ENV=development mocha --exit test/unit/*.js",
-    "codecheck": "standard",
-    "codefix": "standard --fix",
     "docker": "npm install --development && npm run build && npm prune --production",
     "build": "NODE_ENV=production gulp build",
     "start": "NODE_ENV=production node app.js",
@@ -65,7 +63,6 @@
     "nock": "^10.0.6",
     "node-mocks-http": "^1.7.3",
     "nodemon": "^1.18.9",
-    "standard": "^12.0.1",
     "zombie": "6.1.4"
   },
   "engines": {
