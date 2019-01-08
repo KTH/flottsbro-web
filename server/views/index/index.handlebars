@@ -2,121 +2,137 @@
 <script src="//cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
 <link rel="stylesheet" href="//cdn.datatables.net/1.10.18/css/jquery.dataTables.min.css">
 
-<h1>CD Pipeline Deployments</h1>
+<div class="col">
 
-{{#if error}}
-<div aria-live="polite" role="alert" class="alert alert-danger">
-      <p><strong>Opps this is not suppose to happen...</strong></p>
-      <p>{{error}}</p>
+  <h1>CD Pipeline Deployments</h1>
+
+  {{#if error}}
+  <div aria-live="polite" role="alert" class="alert alert-danger">
+    <p><strong>Opps this is not suppose to happen...</strong></p>
+    <p>{{error}}</p>
   </div>
-{{else}}
+  {{else}}
 
-<p>These are the web and apis developed by KTH´s IT-department, and deployed using our CD pipeline. </p>
+  <p>These are the web and apis developed by KTH´s IT-department, and deployed using our CD pipeline. </p>
 
-<h2>Is something not working?</h2>
-<p>Have a look at our list of our publicly monitored services, <a href="https://www.kthstatus.se/">and there status here</a>, to see if they are working as intended.</p>
-<p>For more information about larger outages, please look at the <a href="https://www.kth.se/en/gemensamt/driftsinformation-webbtjanster/ug-rss">IT-Support pages.</a></p>
+  <h2>Is something not working?</h2>
+  <p>Have a look at our list of our publicly monitored services, <a href="https://www.kthstatus.se/">and there status
+      here</a>, to see if they are working as intended.</p>
+  <p>For more information about larger outages, please look at the <a href="https://www.kth.se/en/gemensamt/driftsinformation-webbtjanster/ug-rss">IT-Support
+      pages.</a></p>
 
-<table id="deployments">
+  <table id="deployments">
 
-  <thead>
-    <tr>
-      <th>Application</th>
-      <th>Path</th>
-      <th>Updated</th>
-      <th>Responsible team: </th>
-    </tr>
-  </thead>
+    <thead>
+      <tr>
+        <th>Application</th>
+        <th>Path</th>
+        <th>Updated</th>
+        <th>Responsible team: </th>
+      </tr>
+    </thead>
 
-  <tbody>
+    <tbody>
 
-    {{#each data}}
-    <tr>
-      {{#if this.publicNameEnglish}}
-      <td class="applicationName"><a href="#irt"><span title="Incident Response Time: {{this.importance}}" class="importance {{this.importance}}"></span></a> <a href="#{{this.applicationName}}">{{this.publicNameEnglish}}</a></td>
-    {{else}}
-      <td class="applicationName"><a href="#irt"><span title="Incident Response Time: {{this.importance}}" class="importance {{this.importance}}"></span></a> <a href="#{{this.applicationName}}">{{this.applicationName}}</a></td>
-    {{/if}}
-      {{#if this.monitorUrl}}
+      {{#each data}}
+      <tr>
+        {{#if this.publicNameEnglish}}
+        <td class="applicationName"><a href="#irt"><span title="Incident Response Time: {{this.importance}}" class="importance {{this.importance}}"></span></a>
+          <a href="#{{this.applicationName}}">{{this.publicNameEnglish}}</a></td>
+        {{else}}
+        <td class="applicationName"><a href="#irt"><span title="Incident Response Time: {{this.importance}}" class="importance {{this.importance}}"></span></a>
+          <a href="#{{this.applicationName}}">{{this.applicationName}}</a></td>
+        {{/if}}
+        {{#if this.monitorUrl}}
         <td class="path"><a href="{{this.monitorUrl}}">{{this.path}}</a></td>
-      {{else}}
+        {{else}}
         <td class="path"><a href="https://app.kth.se{{this.path}}">{{this.path}}</a></td>
-      {{/if}}
-      <td class="created"><span style="display: none">{{this.created}}</span><span id="created{{@index}}">{{this.created}}</span></td>
-      <td class="created">{{this.slackChannels}}</td>
-    </tr>
-    <script>
-      
-      document.getElementById("created{{@index}}").innerHTML = moment.unix({{this.created}}).fromNow()
+        {{/if}}
+        <td class="created"><span style="display: none">{{this.created}}</span><span id="created{{@index}}">{{this.created}}</span></td>
+        <td class="created">{{this.slackChannels}}</td>
+      </tr>
+      <script>
 
-    </script>
+        document.getElementById("created{{@index}}").innerHTML = moment.unix({{ this.created }}).fromNow()
 
-    {{/each}}
+      </script>
 
-  </tbody>
-</table>
+      {{/each}}
 
-<a name="irt"></a>
-<h2>Incident Response Time</h2>
+    </tbody>
+  </table>
+
+  <a name="irt"></a>
+  <h2>Incident Response Time</h2>
   <p>
     The coloured circles is a classification of the importance of each service.
     It indicates how fast the Operations or Support team start working on the service incase of an outage.
   </p>
 
-<div aria-live="polite" role="alert" class="alert alert-info">
+  <div aria-live="polite" role="alert" class="alert alert-info">
 
-  <p>
-    <span class="importance high"></span> High <span class="alert-info-text" >- Actively monitored by operations personal during office hours. Operations are on call until midnight. Action to bring back the service is normally taken within 15 minutes during office hours, and within one hour during On call hours.</span><br/>
-    <span class="importance medium"></span> Medium <span class="alert-info-text" >- Actively monitored by operations personal during office hours. Action to bring back the service is normally within 2 hours. Outages outside office hours are handled the following morning.</span><br/>
-    <span class="importance low"></span> Low <span class="alert-info-text" >- The service is normally back within a day.</span><br/>
-  </p>
-  <p>Read more about <a href="https://www.kth.se/it/tjansteutbud/beredskap-1.681065"> KTH´s on call policy (In Swedish)</a>.</p>
-</div>
+    <p>
+      <span class="importance high"></span> High <span class="alert-info-text">- Actively monitored by operations
+        personal during office hours. Operations are on call until midnight. Action to bring back the service is
+        normally taken within 15 minutes during office hours, and within one hour during On call hours.</span><br />
+      <span class="importance medium"></span> Medium <span class="alert-info-text">- Actively monitored by operations
+        personal during office hours. Action to bring back the service is normally within 2 hours. Outages outside
+        office hours are handled the following morning.</span><br />
+      <span class="importance low"></span> Low <span class="alert-info-text">- The service is normally back within a
+        day.</span><br />
+    </p>
+    <p>Read more about <a href="https://www.kth.se/it/tjansteutbud/beredskap-1.681065"> KTH´s on call policy (In
+        Swedish)</a>.</p>
+  </div>
 
 
-<h2>Extended information about the listed services</h2>
-{{#each data}}
+  <h2>Extended information about the listed services</h2>
+  {{#each data}}
 
-<div class="application">
-  <a name="{{this.applicationName}}"></a>
-  {{#if this.publicNameEnglish}}
-   <h3>{{this.publicNameEnglish}} <span class="applicationName"> - {{this.applicationName}}</span></h3> 
-  {{else}}
-    <h3>{{this.applicationName}}</h3> 
-  {{/if}}
+  <div class="application">
+    <a name="{{this.applicationName}}"></a>
+    {{#if this.publicNameEnglish}}
+    <h3>{{this.publicNameEnglish}} <span class="applicationName"> - {{this.applicationName}}</span></h3>
+    {{else}}
+    <h3>{{this.applicationName}}</h3>
+    {{/if}}
 
-  {{#if this.publicNameSwedish}}
-    <strong>Svenskt namn:</strong> {{this.publicNameSwedish}}<br /> 
-  {{/if}}
+    {{#if this.publicNameSwedish}}
+    <strong>Svenskt namn:</strong> {{this.publicNameSwedish}}<br />
+    {{/if}}
 
-  {{#if this.descriptionEnglish }}
+    {{#if this.descriptionEnglish }}
     <p>{{this.descriptionEnglish}} </p>
-  {{/if}}
+    {{/if}}
 
-  <strong>Website:</strong>  {{#if this.monitorUrl}}<a href="{{this.monitorUrl}}">{{this.monitorUrl}}</a> {{else}} <a href="https://app.kth.se{{this.path}}">https://app.kth.se{{this.path}}</a> {{/if}}<br />
-  <strong>Version: </strong>: {{this.version}}<br/>
-  {{#if this.importance}}
-    <strong>Incident response time:</strong> <span title="Application importance: {{this.importance}}" class="importance {{this.importance}}"></span> {{this.importance}}<br/>
-  {{/if}}
-  {{#if this.slackChannels}}
-    <strong>Responsible team: </strong>{{this.slackChannels}} <br/>
-  {{/if}}
+    <strong>Website:</strong> {{#if this.monitorUrl}}<a href="{{this.monitorUrl}}">{{this.monitorUrl}}</a> {{else}} <a
+      href="https://app.kth.se{{this.path}}">https://app.kth.se{{this.path}}</a> {{/if}}<br />
+    <strong>Version: </strong>: {{this.version}}<br />
+    {{#if this.importance}}
+    <strong>Incident response time:</strong> <span title="Application importance: {{this.importance}}" class="importance {{this.importance}}"></span>
+    {{this.importance}}<br />
+    {{/if}}
+    {{#if this.slackChannels}}
+    <strong>Responsible team: </strong>{{this.slackChannels}} <br />
+    {{/if}}
 
-  <hr />
+    <hr />
+  </div>
+  {{/each}} {{/if}}
+
+
+  <script>
+    $(function () {
+      if ($(window).width() > 768) {
+        $('#deployments').DataTable({
+          paging: false,
+          info: false,
+          searching: false,
+          order: [[0, 'asc']],
+          columnDefs: []
+        })
+      }
+    })
+  </script>
+
 </div>
-{{/each}} {{/if}}
-
-
-<script>
-  $(function () {
-    if ($(window).width() > 768) {
-      $('#deployments').DataTable({
-        paging: false,
-        info: false,
-        searching: false,
-        order: [[0, 'asc']],
-        columnDefs: []
-      })
-    }
-  })
-</script>

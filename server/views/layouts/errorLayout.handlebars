@@ -1,58 +1,29 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>{{friendly}}</title>
+    <title>KTH | {{title}}</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="{{description}}">
     <link rel="shortcut icon" id="favicon" href="//www.kth.se/img/icon/favicon.ico">
 
-    {{prefixStyle '/static/css/bootstrap/bootstrap.min.css' 'styles' 'screen'}}
-    {{prefixStyle '/static/css/kth-style/kth-bootstrap-theme.css' 'styles' 'screen'}}
-    {{#extend 'styles'}}
-      <style>
-        #kth-pmenu #menu-bar-wrapper {
-          z-index: 9999;
-        }
+    {{#if canonicalUrl}}
+      <link href="{{canonicalUrl}}" rel="canonical">
+    {{/if}}
 
-        body.error {
-          background-color: #e3e5e3;
-        }
-
-        body.error .content {
-          box-shadow: 0 0 5px 5px #aeb4ae;
-          background-color: #fff;
-          transform: rotate(-5deg);
-          -moz-transform: rotate(-5deg);
-          -webkit-transform: rotate(-5deg);
-          padding: 30px 40px 40px;
-          max-width: 550px;
-          margin: 30px auto;
-        }
-
-        body.error .content h1 {
-          font-size: 2.8rem;
-          font-family: Georgia Regular,Georgia,garamond pro,garamond,times new roman,times,serif;
-          font-weight: 400;
-          border-bottom: none;
-        }
-
-        body.error .content .kthLovesGeeks {
-          color: #b9bbbd;
-        }
-      </style>
-    {{/extend}}
+    {{prefixStyle '/static/kth-style/css/kth-bootstrap.min.css' 'styles' 'screen'}}
+    {{prefixStyle '/static/css/node-web.css' 'styles' 'screen'}}
 
     {{{render 'styles'}}}
 
     {{prefixScript '/static/js/vendor.js' 'head-scripts'}}
     {{prefixScript '/static/browserConfig' 'head-scripts'}}
     {{#extend 'head-scripts'}}
-        <script src="//www.kth.se/social/toolbar/widget.js"></script>
-        <!-- analytics start -->
-        {{{blocks.analytics}}}
-        <!-- analytics end -->
+      <script src="//www.kth.se/social/toolbar/widget.js"></script>
+      <!-- analytics start -->
+      {{{blocks.analytics}}}
+      <!-- analytics end -->
     {{/extend}}
 
     {{#if debug}}
@@ -61,15 +32,14 @@
 
     {{{render 'head-scripts'}}}
   </head>
-  <body class="error code{{status}} use-personal-menu">
-    <div class="content">
+  <body>
       {{> kthHeader }}
-      {{{body}}}
-      
-      <p>Page served by: Flottsbro-web</p>
-    </div>
-
+      <div class="container main">
+        <div class="row">
+          {{{body}}}
+        </div>
+      </div>
+      {{> kthFooter }}
     {{{render 'scripts'}}}
-
   </body>
 </html>
