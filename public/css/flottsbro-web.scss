@@ -2,11 +2,19 @@
     margin-bottom: 30px;
 }
 
+table#deployments.dataTable tbody td {
+    background: #f6f6f6;
+    border-top: 1px solid #ffffff
+}
 table#deployments.dataTable thead,
 table#deployments.dataTable thead th,
 table#deployments.dataTable thead td,
 table#deployments.dataTable.no-footer {
     border-bottom: none;
+    padding: 15px;
+}
+table#deployments.dataTable.no-footer {
+    padding: 0px;
 }
 
 #deployments {
