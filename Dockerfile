@@ -14,9 +14,8 @@ RUN apk --no-cache add --virtual native-deps \
     g++ gcc libgcc libstdc++ linux-headers make python && \
     npm install --quiet node-gyp -g &&\
     npm install --quiet && \
-    apk del native-deps
-
-RUN apk add --no-cache --virtual .gyp \
+    apk del native-deps && \
+    apk add --no-cache --virtual .gyp \
         python2 \
         python2-dev \
         build-base \
@@ -24,9 +23,7 @@ RUN apk add --no-cache --virtual .gyp \
         .gyp \
         g++ && \
     npm install --production --no-optional && \
-    apk del .gyp
-
-RUN echo $PYTHONPATH
+    apk del .gyp g++ gcc libgcc libstdc++ linux-headers make python python2 python2-dev build-base
 
 # Add the code and copy over the node_modules-catalog
 WORKDIR /application
@@ -50,4 +47,4 @@ ENV NODE_PATH /application
 
 EXPOSE 3000
 
-ENTRYPOINT ["node", "app.js"]
+CMD ["node", "app.js"]

@@ -1,3 +1,14 @@
+#deployments_wrapper {
+    margin-bottom: 3rem;
+}
+
+table#deployments.dataTable thead,
+table#deployments.dataTable thead th,
+table#deployments.dataTable thead td,
+table#deployments.dataTable.no-footer {
+    border-bottom: none;
+}
+
 #deployments {
     .applicationName {
         a {
@@ -51,4 +62,12 @@ h3 {
     width: 100%;
     margin: 15px;
     overflow: hidden;
+}
+
+.alert-info::before {
+    top: .5em;
+    left: .5em;
+}
+.alert-info {
+    margin-bottom: 3rem;
 }
