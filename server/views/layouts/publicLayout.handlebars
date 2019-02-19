@@ -12,6 +12,9 @@
       <link href="{{canonicalUrl}}" rel="canonical">
     {{/if}}
 
+    {{prefixStyle '/static/kth-style/css/kth-bootstrap.min.css' 'styles' 'screen'}}
+    {{prefixStyle '/static/css/flottsbro-web.css' 'styles' 'screen'}}
+
     {{{render 'styles'}}}
 
     {{prefixScript '/static/js/vendor.js' 'head-scripts'}}
@@ -23,9 +26,6 @@
       <!-- analytics end -->
     {{/extend}}
 
-    {{prefixStyle '/static/kth-style/css/kth-bootstrap.min.css' 'styles' 'screen'}}
-    {{prefixStyle '/static/css/flottsbro-web.css' 'styles' 'screen'}}
-
     {{#if debug}}
       {{prefixScript '/static/js/lib/firebug-lite/build/firebug-lite.js' 'head-scripts'}}
     {{/if}}
@@ -36,7 +36,9 @@
       {{> kthHeader }}
       <div class="container main">
         <div class="row">
-          {{{body}}}
+          <div id="app">
+            {{{body}}}
+          </div>
         </div>
       </div>
       {{> kthFooter }}
