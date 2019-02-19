@@ -2,7 +2,6 @@
 <script src="//cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
 <link rel="stylesheet" href="//cdn.datatables.net/1.10.18/css/jquery.dataTables.min.css">
 
-<div class="col">
   <h1>Continuous Delivery Deployments</h1>
 
   {{#if error}}
@@ -19,9 +18,31 @@
 
   <h2>Is something not working?</h2>
   <p>Have a look at our list of our publicly monitored services, <a href="https://www.kthstatus.se/">and there status
-      here</a>, to see if they are working as intended.</p>
-  <p>For more information about larger outages, please look at the <a href="https://www.kth.se/en/gemensamt/driftsinformation-webbtjanster/ug-rss">IT-Support
-      pages.</a></p>
+      here</a>, to see if they are working as intended. For more information about larger outages, please look at the
+      <a href="https://www.kth.se/en/gemensamt/driftsinformation-webbtjanster/ug-rss">IT-Support pages</a>.
+  </p>
+
+  <a name="irt"></a>
+  <h3>Incident response time per service</h3>
+  <p>
+    The coloured circles indicates how fast the Operations or Support team start working on the service incase of an outage.
+    You can see each service classification bellow.
+
+  <div aria-live="polite" role="alert" class="alert alert-info">
+
+    <p>
+      <span class="importance high"></span> High <span class="alert-info-text">- Actively monitored by operations
+        personal during office hours. Operations are on call until midnight. Action to bring back the service is
+        normally taken within 15 minutes during office hours, and within one hour during On call hours.</span><br />
+      <span class="importance medium"></span> Medium <span class="alert-info-text">- Actively monitored by operations
+        personal during office hours. Action to bring back the service is normally within 2 hours. Outages outside
+        office hours are handled the following morning.</span><br />
+      <span class="importance low"></span> Low <span class="alert-info-text">- The service is normally back within a
+        day.</span><br />
+    </p>
+    <p>Read more about <a href="https://www.kth.se/it/tjansteutbud/beredskap-1.681065"> KTH´s on call policy (In
+        Swedish)</a>.</p>
+  </div>
 
   <table id="deployments">
 
@@ -64,28 +85,7 @@
     </tbody>
   </table>
 
-  <a name="irt"></a>
-  <h2>Incident Response Time</h2>
-  <p>
-    The coloured circles is a classification of the importance of each service.
-    It indicates how fast the Operations or Support team start working on the service incase of an outage.
-  </p>
-
-  <div aria-live="polite" role="alert" class="alert alert-info">
-
-    <p>
-      <span class="importance high"></span> High <span class="alert-info-text">- Actively monitored by operations
-        personal during office hours. Operations are on call until midnight. Action to bring back the service is
-        normally taken within 15 minutes during office hours, and within one hour during On call hours.</span><br />
-      <span class="importance medium"></span> Medium <span class="alert-info-text">- Actively monitored by operations
-        personal during office hours. Action to bring back the service is normally within 2 hours. Outages outside
-        office hours are handled the following morning.</span><br />
-      <span class="importance low"></span> Low <span class="alert-info-text">- The service is normally back within a
-        day.</span><br />
-    </p>
-    <p>Read more about <a href="https://www.kth.se/it/tjansteutbud/beredskap-1.681065"> KTH´s on call policy (In
-        Swedish)</a>.</p>
-  </div>
+  
 
   {{#each data}}
 
@@ -134,5 +134,3 @@
       }
     })
   </script>
-
-</div>
