@@ -1,5 +1,5 @@
 #deployments_wrapper {
-    margin-bottom: 3rem;
+    margin-bottom: 30px;
 }
 
 table#deployments.dataTable thead,
@@ -66,9 +66,9 @@ h3 {
 }
 
 .alert-info::before {
-    top: .5em;
-    left: .5em;
+    content: none;
 }
 .alert-info {
-    margin-bottom: 3rem;
+    margin-bottom: 30px;
+    padding: 30px;
 }
