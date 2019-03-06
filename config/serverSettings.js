@@ -55,7 +55,7 @@ module.exports = {
   nodeApi: {
     pipelineApi: unpackNodeApiConfig(
       "API_URI",
-      "https://api-r.referens.sys.kth.se/api/pipeline?defaultTimeout=10000",
+      "http://localhost:3001/api/pipeline?defaultTimeout=10000",
     )
   },
 

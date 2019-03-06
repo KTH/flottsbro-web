@@ -43,7 +43,11 @@ function* getIndex(req, res, next) {
     log.error("Unable to render deployments from the API.", {
       error: err
     });
-    next(err);
+    res.render("index/index", {
+      debug: "debug" in req.query,
+      error: "We are currently not able to show information about applications :("
+    })
+
   }
 }
 

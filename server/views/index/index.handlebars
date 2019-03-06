@@ -50,7 +50,7 @@
     <thead>
       <tr>
         <th>Application</th>
-        <th>Path</th>
+        <th>Url</th>
         <th>Last updated</th>
         <th>Responsible team: </th>
       </tr>
@@ -60,20 +60,12 @@
 
       {{#each data}}
       <tr>
-        {{#if this.publicNameEnglish}}
         <td class="applicationName"><a href="#irt"><span title="Incident Response Time: {{this.importance}}" class="importance {{this.importance}}"></span></a>
-          <a href="#{{this.applicationName}}">{{this.publicNameEnglish}}</a></td>
-        {{else}}
-        <td class="applicationName"><a href="#irt"><span title="Incident Response Time: {{this.importance}}" class="importance {{this.importance}}"></span></a>
-          <a href="#{{this.applicationName}}">{{this.applicationName}}</a></td>
-        {{/if}}
-        {{#if this.monitorUrl}}
-        <td class="path"><a href="{{this.monitorUrl}}">{{this.path}}</a></td>
-        {{else}}
-        <td class="path"><a href="https://app.kth.se{{this.path}}">{{this.path}}</a></td>
-        {{/if}}
+          <a href="#{{this.applicationName}}">{{this.friendlyName}}</a>
+        </td>
+        <td class="path"><a href="{{this.applicationUrl}}">{{this.applicationUrl}}</a></td>
         <td class="created"><span style="display: none">{{this.created}}</span><span id="created{{@index}}">{{this.created}}</span></td>
-        <td class="created">{{this.slackChannels}}</td>
+        <td class="team">{{this.team}}</td>
       </tr>
       <script>
 
@@ -89,32 +81,36 @@
   
 
   {{#each data}}
-
+  <a name="{{this.applicationName}}"></a>
   <div class="application">
-    <a name="{{this.applicationName}}"></a>
+    
     {{#if this.publicNameEnglish}}
     <h3>{{this.publicNameEnglish}} <span class="applicationName"> - {{this.applicationName}}</span></h3>
     {{else}}
     <h3>{{this.applicationName}}</h3>
     {{/if}}
 
-    {{#if this.publicNameSwedish}}
-    <strong>Svenskt namn:</strong> {{this.publicNameSwedish}}<br />
-    {{/if}}
 
     {{#if this.descriptionEnglish }}
-    <p>{{this.descriptionEnglish}} </p>
+      <p>{{this.descriptionEnglish}} </p>
     {{/if}}
 
-    <strong>Website:</strong> {{#if this.monitorUrl}}<a href="{{this.monitorUrl}}">{{this.monitorUrl}}</a> {{else}} <a
-      href="https://app.kth.se{{this.path}}">https://app.kth.se{{this.path}}</a> {{/if}}<br />
+  {{#if this.descriptionSwedish }}
+      <p>{{this.descriptionSwedish}} </p>
+    {{/if}}
+
+    {{#if this.publicNameSwedish}}
+      <strong>Svenskt namn:</strong> {{this.publicNameSwedish}}<br />
+    {{/if}}
+    <strong>Website:</strong> <a href="{{this.applicationUrl}}">{{this.applicationUrl}}</a><br />
+    <strong>Monitor page:</strong> <a href="{{this.monitorUrl}}">{{this.monitorUrl}}</a> that should contain <strong>{{this.monitorPattern}}</strong> to be marked as up.<br />
     <strong>Version: </strong>: {{this.version}}<br />
     {{#if this.importance}}
     <strong>Incident response time:</strong> <span title="Application importance: {{this.importance}}" class="importance {{this.importance}}"></span>
     {{this.importance}}<br />
     {{/if}}
-    {{#if this.slackChannels}}
-    <strong>Responsible team: </strong>{{this.slackChannels}} <br />
+    {{#if this.team}}
+    <strong>Responsible team: </strong>{{this.team}} <br />
     {{/if}}
 
     <hr />
