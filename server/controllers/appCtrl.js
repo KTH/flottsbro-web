@@ -52,6 +52,5 @@ function* getIndex(req, res, next) {
 }
 
 module.exports = {
-  getIndex: co.wrap(getIndex),
-  getApis: co.wrap(getApis)
+  getIndex: co.wrap(getIndex)
 };
