@@ -102,7 +102,9 @@
     {{#if this.publicNameSwedish}}
       <strong>Svenskt namn:</strong> {{this.publicNameSwedish}}<br />
     {{/if}}
-    <strong>Website:</strong> <a href="{{this.applicationUrl}}">{{this.applicationUrl}}</a><br />
+    {{#if this.applicationUrl}}
+      <strong>Website:</strong> <a href="{{this.applicationUrl}}">{{this.applicationUrl}}</a><br />
+    {{/if}}
     {{#if this.aboutUrl}}
        <strong>About page:</strong> <a href="{{this.aboutUrl}}">{{this.aboutUrl}}</a><br />
     {{/if}}
