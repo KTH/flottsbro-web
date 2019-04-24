@@ -106,31 +106,31 @@
       <strong>Website:</strong> <a href="{{this.applicationUrl}}">{{this.applicationUrl}}</a><br /><br />
     {{/if}}
 
-
+    <ul>
     {{#if this.publicNameSwedish}}
-      <strong>Svenskt namn:</strong> {{this.publicNameSwedish}}<br />
+      <li><strong>Svenskt namn:</strong> {{this.publicNameSwedish}}</li>
     {{/if}}
 
 
     {{#if this.aboutUrl}}
-       <strong>About page:</strong> <a href="{{this.aboutUrl}}">{{this.aboutUrl}}</a><br />
+       <li><strong>About page:</strong> <a href="{{this.aboutUrl}}">{{this.aboutUrl}}</a></li>
     {{/if}}
 
     {{#if this.applicationUrl}}
-       <strong>Monitor page:</strong> <a href="{{this.monitorUrl}}">{{this.monitorUrl}}</a> that should contain <strong>{{this.monitorPattern}}</strong> to be marked as up.<br />
+       <li><strong>Monitor page:</strong> <a href="{{this.monitorUrl}}">{{this.monitorUrl}}</a> that should contain <strong>{{this.monitorPattern}}</strong> to be marked as up.</li>
     {{/if}}
     
-    <strong>Version: </strong>: {{this.version}}<br />
+    <li><strong>Version: </strong>: {{this.version}}</li>
 
     {{#if this.importance}}
-      <strong>Incident response time:</strong> <span title="Application importance: {{this.importance}}" class="importance {{this.importance}}"></span>
-      {{this.importance}}<br />
+      <li><strong>Incident response time:</strong> <span title="Application importance: {{this.importance}}" class="importance {{this.importance}}"></span>
+      {{this.importance}}</li>
     {{/if}}
     
     {{#if this.team}}
-      <strong>Responsible team: </strong>{{this.team}} <br />
+      <li><strong>Responsible team: </strong>{{this.team}}</li></li>
     {{/if}}
-
+    </ul>
     <hr />
   </div>
   {{/each}} {{/if}}
