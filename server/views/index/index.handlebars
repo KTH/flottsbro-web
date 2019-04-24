@@ -89,6 +89,10 @@
     {{else}}
       <h3>{{this.applicationName}}</h3>
     {{/if}}
+    {{#if this.publicUserDocumentationUrl}}
+      <strong class="publicUserDocumentationUrl" >User documentation:</strong> <a href="{{this.publicUserDocumentationUrl}}">{{this.publicUserDocumentationUrl}}</a><br /><br />
+    {{/if}}
+
 
     {{#if this.descriptionEnglish }}
       <p>{{this.descriptionEnglish}} </p>
@@ -98,17 +102,15 @@
       <p>{{this.descriptionSwedish}} </p>
     {{/if}}
 
+    {{#if this.applicationUrl}}
+      <strong>Website:</strong> <a href="{{this.applicationUrl}}">{{this.applicationUrl}}</a><br /><br />
+    {{/if}}
+
+
     {{#if this.publicNameSwedish}}
       <strong>Svenskt namn:</strong> {{this.publicNameSwedish}}<br />
     {{/if}}
 
-    {{#if this.applicationUrl}}
-      <strong>Website:</strong> <a href="{{this.applicationUrl}}">{{this.applicationUrl}}</a><br />
-    {{/if}}
-
-    {{#if this.publicUserDocumentationUrl}}
-       <strong class="publicUserDocumentationUr" >User documentation:</strong> <a href="{{this.publicUserDocumentationUrl}}">{{this.publicUserDocumentationUrl}}</a><br />
-    {{/if}}
 
     {{#if this.aboutUrl}}
        <strong>About page:</strong> <a href="{{this.aboutUrl}}">{{this.aboutUrl}}</a><br />
