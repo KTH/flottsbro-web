@@ -104,9 +104,15 @@
 
     {{#if this.applicationUrl}}
       <strong>Website:</strong> <a href="{{this.applicationUrl}}">{{this.applicationUrl}}</a><br /><br />
+
     {{/if}}
 
     <ul>
+      <li><strong class="updated">Last updated:</strong> <span id="updated{{this.applicationName}}">{{this.created}}</span>
+      <script>
+        document.getElementById("updated{{this.applicationName}}").innerHTML = moment.unix({{ this.created }}).fromNow()
+      </script></li>
+      
     {{#if this.publicNameSwedish}}
       <li><strong>Svenskt namn:</strong> {{this.publicNameSwedish}}</li>
     {{/if}}
