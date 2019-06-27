@@ -14,10 +14,8 @@ const api = require("../api");
 const co = require("co");
 const Promise = require("bluebird");
 const registry = require("component-registry").globalRegistry;
-const {
-  IHealthCheck
-} = require("kth-node-monitor").interfaces;
-
+const { IHealthCheck } = require("kth-node-monitor").interfaces;
+const started = new Date();
 /*
  * ----------------------------------------------------------------
  * Publicly exported functions.
@@ -45,9 +43,12 @@ function _notFound(req, res, next) {
 
 // this function must keep this signature for it to work properly
 function _final(err, req, res, next) {
-  log.error({
-    err: err
-  }, `Unhandled error ${err}`);
+  log.error(
+    {
+      err: err
+    },
+    `Unhandled error ${err}`
+  );
 
   const statusCode = err.status || err.statusCode || 500;
   const isProd = /prod/gi.test(process.env.NODE_ENV);
@@ -101,6 +102,7 @@ function _about(req, res) {
     dockerName: JSON.stringify(version.dockerName),
     dockerVersion: JSON.stringify(version.dockerVersion),
     language: language.getLanguage(res),
+    started: started,
     env: require("../server").get("env")
   });
 }
