@@ -92,9 +92,9 @@
     {{/if}}
 
     {{#if this.applicationUrl}}
-      <strong>Website:</strong> <a href="{{this.applicationUrl}}">{{this.applicationUrl}}</a><br /><br />
+      <div class="applicationUrl"><a href="{{this.applicationUrl}}">{{this.applicationUrl}}</a></div>
     {{/if}}
-
+    
 <div class="row">
     <div class="col-sm">
       {{#if this.descriptionEnglish }}
@@ -110,15 +110,17 @@
       {{/if}}
     </div>
   </div>
-  <br/>
+
+  {{#if this.publicUserDocumentationUrl}}
+        {{#if this.publicApiDocumentationUrl}}
+          <div class="publicApiDocumentationUrl"><a href="{{this.publicApiDocumentationUrl}}">API documentation</a></div>
+        {{else}}
+          <div class="publicUserDocumentationUrl"><a href="{{this.publicUserDocumentationUrl}}">User documentation</a></div>
+        {{/if}}
+  {{/if}}
 
     <ul>
-    {{#if this.publicUserDocumentationUrl}}
-      <li class="publicUserDocumentationUrl"><a href="{{this.publicUserDocumentationUrl}}">User documentation</a></li>
-    {{/if}}
-    {{#if this.swaggerUrl}}
-      <li class="swaggerUrl"><a href="{{this.swaggerUrl}}">API documentation</a></li>
-    {{/if}}
+    
       <li><strong class="updated">Last updated:</strong> <span id="updated{{this.applicationName}}">{{this.created}}</span>
       <script>
         document.getElementById("updated{{this.applicationName}}").innerHTML = moment.unix({{ this.created }}).fromNow()
