@@ -13,9 +13,7 @@ const {
   unpackRedisConfig,
   unpackNodeApiConfig
 } = require("kth-node-configuration");
-const {
-  safeGet
-} = require("safe-utils");
+const { safeGet } = require("safe-utils");
 
 // DEFAULT SETTINGS used for dev, if you want to override these for you local environment, use env-vars in .env
 const devPort = devDefaults(3000);
@@ -55,16 +53,18 @@ module.exports = {
   nodeApi: {
     pipelineApi: unpackNodeApiConfig(
       "API_URI",
-      "http://localhost:3001/api/pipeline?defaultTimeout=10000",
+      "http://localhost:3001/api/pipeline?defaultTimeout=10000&required=true"
     )
   },
 
-
   // Cortina
   blockApi: {
-    blockUrl: getEnv('CM_HOST_URL', devDefaults('https://www-r.referens.sys.kth.se/cm/')), // Block API base URL
+    blockUrl: getEnv(
+      "CM_HOST_URL",
+      devDefaults("https://www-r.referens.sys.kth.se/cm/")
+    ), // Block API base URL
     headers: {
-      'User-Agent': getEnv('CM_USER_AGENT', devDefaults('kth')) // Set User-Agent as an access token when fetching Cortina Blocks
+      "User-Agent": getEnv("CM_USER_AGENT", devDefaults("kth")) // Set User-Agent as an access token when fetching Cortina Blocks
     }
   },
 
@@ -83,10 +83,10 @@ module.exports = {
 
   cache: {
     cortinaBlock: {
-      redis: unpackRedisConfig('REDIS_URI', devRedis)
+      redis: unpackRedisConfig("REDIS_URI", devRedis)
     },
     pipelineApi: {
-      redis: unpackRedisConfig('REDIS_URI', devRedis),
+      redis: unpackRedisConfig("REDIS_URI", devRedis),
       expireTime: 60000
     }
   },

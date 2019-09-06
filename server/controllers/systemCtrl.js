@@ -14,7 +14,7 @@ const api = require("../api");
 const co = require("co");
 const Promise = require("bluebird");
 const registry = require("component-registry").globalRegistry;
-const { IHealthCheck } = require("kth-node-monitor").interfaces;
+const monitor = require("kth-node-monitor");
 const started = new Date();
 /*
  * ----------------------------------------------------------------
@@ -115,30 +115,37 @@ function _monitor(req, res) {
 
   // Check APIs
   const subSystems = Object.keys(api).map(apiKey => {
-    const apiHealthUtil = registry.getUtility(IHealthCheck, "kth-node-api");
+    const apiHealthUtil = registry.getUtility(
+      monitor.interfaces.IHealthCheck,
+      monitor.interfaces.names.KTH_NODE_API
+    );
     return apiHealthUtil.status(api[apiKey], {
       required: apiConfig[apiKey].required
     });
   });
 
-  // If we need local system checks, such as memory or disk, we would add it here.
-  // Make sure it returns a promise which resolves with an object containing:
-  // {statusCode: ###, message: '...'}
-  // The property statusCode should be standard HTTP status codes.
-  const localSystems = Promise.resolve({
-    statusCode: 200,
-    message: "OK"
-  });
+  // Check Redis
+  const redisHealthUtil = registry.getUtility(
+    monitor.interfaces.IHealthCheck,
+    monitor.interfaces.names.KTH_NODE_REDIS
+  );
+  subSystems.push(
+    redisHealthUtil.status(
+      require("kth-node-redis"),
+      config.cache.pipelineApi.redis,
+      { required: true }
+    )
+  );
 
   /* -- You will normally not change anything below this line -- */
 
   // Determine system health based on the results of the checks above. Expects
   // arrays of promises as input. This returns a promise
   const systemHealthUtil = registry.getUtility(
-    IHealthCheck,
-    "kth-node-system-check"
+    monitor.interfaces.IHealthCheck,
+    monitor.interfaces.names.KTH_NODE_SYSTEM_CHECK
   );
-  const systemStatus = systemHealthUtil.status(localSystems, subSystems);
+  const systemStatus = systemHealthUtil.status(null, subSystems);
 
   systemStatus
     .then(status => {
