@@ -19,6 +19,7 @@
     "start-dev": "cross-env NODE_ENV=development gulp build && cross-env NODE_ENV=development concurrently --kill-others \"nodemon --ignore dist/ app.js\" \"gulp watch\""
   },
   "dependencies": {
+    "@kth/in-memory-cache": "^0.1.1",
     "bluebird": "^3.5.3",
     "body-parser": "^1.18.3",
     "bootstrap": "^4.2.1",
