@@ -1,15 +1,15 @@
 {
   "system": {
     "monitor": {
-      "uri": "/api/node/_monitor",
+      "uri": "/api/pipeline/_monitor",
       "method": "get"
     },
     "about": {
-      "uri": "/api/node/_about",
+      "uri": "/api/pipeline/_about",
       "method": "get"
     },
     "paths": {
-      "uri": "/api/node/_paths",
+      "uri": "/api/pipeline/_paths",
       "method": "get"
     },
     "robots": {
@@ -17,13 +17,13 @@
       "method": "get"
     },
     "swagger": {
-      "uri": "/api/node/swagger.json",
+      "uri": "/api/pipeline/swagger.json",
       "method": "get"
     }
   },
   "api": {
     "checkAPIkey": {
-      "uri": "/api/node/_checkAPIkey",
+      "uri": "/api/pipeline/_checkAPIkey",
       "method": "GET",
       "apikey": {
         "scope_required": true,
@@ -34,7 +34,7 @@
       }
     },
     "getDataById": {
-      "uri": "/api/node/v1/data/:id",
+      "uri": "/api/pipeline/v1/data/:id",
       "method": "GET",
       "apikey": {
         "scope_required": true,
@@ -45,7 +45,7 @@
       }
     },
     "postDataById": {
-      "uri": "/api/node/v1/data/:id",
+      "uri": "/api/pipeline/v1/data/:id",
       "method": "POST",
       "apikey": {
         "scope_required": true,

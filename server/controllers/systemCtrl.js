@@ -119,9 +119,9 @@ function _monitor(req, res) {
       monitor.interfaces.IHealthCheck,
       monitor.interfaces.names.KTH_NODE_API
     );
-    return apiHealthUtil.status(api[apiKey], {
-      required: apiConfig[apiKey].required
-    });
+    apiClient = config.nodeApi[apiKey];
+    const url = `${apiClient.proxyBasePath}/_monitor`;
+    return apiHealthUtil.status(url, apiClient.required);
   });
 
   // Check Redis

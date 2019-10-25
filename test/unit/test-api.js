@@ -33,17 +33,4 @@ describe("Index page", function() {
       done();
     }, 500);
   });
-  it("should get the index page", done => {
-    api.get("/v1/data/123").reply(200, {
-      id: "123",
-      name: "asdasd"
-    });
-    const ctrl = require("../../server/controllers/sampleCtrl");
-    const { req, res } = httpMocks.createMocks();
-    res.render = function(view, data) {
-      expect(data).to.be.not.undefined;
-      done();
-    };
-    ctrl.getIndex(req, res, console.log);
-  });
 });

@@ -1,58 +1,66 @@
-'use strict'
-const gulp = require('gulp')
+"use strict";
+const gulp = require("gulp");
+const mergeStream = require("merge-stream");
 
 const globals = {
   dirname: __dirname
-}
+};
 
 const {
-  webpack,
+  moveResources,
   sass,
   vendor,
   clean
-} = require('kth-node-build-commons').tasks(globals)
+} = require("kth-node-build-commons").tasks(globals);
+const { moveHandlebarPages } = require("kth-node-web-common/gulp");
+
+gulp.task("vendor", vendor);
+gulp.task("moveHandlebarPages", moveHandlebarPages);
+gulp.task("clean", clean);
+gulp.task("sass", sass);
+
+// *** JavaScript helper tasks ***
+gulp.task("moveResources", function() {
+  return mergeStream(
+    moveResources.moveKthStyle(),
+    moveResources.moveBootstrap(),
+    moveResources.moveFontAwesome()
+  );
+});
+
+gulp.task("moveImages", function() {
+  // Move project image files
+  return gulp.src("./public/img/**/*").pipe(gulp.dest("dist/img"));
+});
 
 /**
  * Usage:
  *
  *  One-time build of browser dependencies for development
- *
- *    $ gulp build:dev
+ *  $ gulp build [--production | --development]
  *
  *  Continuous re-build during development
- *
- *    $ gulp watch
- *
- *  One-time build for Deployment (Gulp tasks will check NODE_ENV if no option is passed)
- *
- *    $ gulp build [--production | --reference]
- *
- *  Remove the generated files
- *
- *    $ gulp clean
- *
- **/
-
-// *** JavaScript helper tasks ***
-gulp.task('webpack', webpack)
-gulp.task('vendor', vendor)
-
-gulp.task('transpileSass', () => sass())
-
-/* Put any additional helper tasks here */
-
-/**
- *
- *  Public tasks used by developer:
- *
+ *  $ gulp watch
  */
 
-gulp.task('clean', clean)
+gulp.task(
+  "build",
+  gulp.series(
+    gulp.parallel(
+      "moveHandlebarPages",
+      "moveResources",
+      "moveImages",
+      "vendor"
+    ),
+    sass
+  )
+);
 
-gulp.task('build', ['vendor', 'webpack'], () => sass())
+gulp.task("watchFiles", done => {
+  gulp.watch(["./public/img/**/*.*"], gulp.parallel("moveImages"));
+  gulp.watch(["./public/js/vendor.js"], gulp.parallel("vendor"));
+  gulp.watch(["./public/css/**/*.scss"], gulp.parallel("sass"));
+  done();
+});
 
-gulp.task('watch', ['build'], function () {
-  gulp.watch(['./public/js/app/**/*.js'], ['webpack'])
-  gulp.watch(['./public/js/vendor.js'], ['vendor'])
-  gulp.watch(['./public/css/**/*.scss'], ['transpileSass'])
-})
+gulp.task("watch", gulp.series("build", "watchFiles"));
