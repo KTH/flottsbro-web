@@ -14,8 +14,6 @@ services:
       SERVICE_PUBLISH : "/pipeline"
       NODE_ENV: "production"
       SERVER_HOST_URL: "http://localhost:3000"
-      CAS_SSO_URI: "https://login-r.referens.sys.kth.se"
-      CM_HOST_URL: "https://www-r.referens.sys.kth.se/cm"
       SESSION_KEY: "flottsbro-web.sid"
       DISPLAY_APPS_IN_CLUSTER: "active"
       
