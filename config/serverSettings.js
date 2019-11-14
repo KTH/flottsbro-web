@@ -105,5 +105,8 @@ module.exports = {
       }
     },
     redisOptions: unpackRedisConfig("REDIS_URI", devRedis)
+  },
+  appInsights: {
+    instrumentationKey: getEnv("APPINSIGHTS_INSTRUMENTATIONKEY")
   }
 };

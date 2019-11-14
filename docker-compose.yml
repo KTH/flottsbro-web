@@ -16,7 +16,8 @@ services:
       SERVER_HOST_URL: "http://localhost:3000"
       SESSION_KEY: "flottsbro-web.sid"
       DISPLAY_APPS_IN_CLUSTER: "active"
-      
+      APPINSIGHTS_INSTRUMENTATIONKEY: "4f0c0a71-b822-4e20-84c0-97150af3f0a9"
+
     ports:
       - 3000:3000
       
