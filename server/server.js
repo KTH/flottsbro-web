@@ -22,7 +22,7 @@ if (config.appInsights && config.appInsights.instrumentationKey) {
     .setAutoCollectDependencies(true)
     .setAutoCollectConsole(true)
     .start();
-  console.log("Using App Insights".);
+  console.log("Using App Insights");
 }
 
 /* ***********************
