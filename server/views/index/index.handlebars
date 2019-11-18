@@ -2,7 +2,7 @@
 <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.18/css/jquery.dataTables.min.css">
 
-  <h1>Incident response times for IT services</h1>
+  <h1>Incident response priorities for IT services</h1>
 
   {{#if error}}
   <div aria-live="polite" role="alert" class="alert alert-danger">
@@ -53,7 +53,7 @@
 
       {{#each data}}
       <tr>
-        <td class="applicationName"><a href="#irt"><span title="Incident Response Time: {{this.importance}}" class="importance {{this.importance}}"></span></a>
+        <td class="applicationName"><a href="#irt"><span title="Incident Response Priority: {{this.importance}}" class="importance {{this.importance}}"></span></a>
           <a href="#{{this.applicationName}}">{{this.friendlyName}}</a>
         </td>
         <td class="path"><a href="{{this.applicationUrl}}">{{this.applicationUrl}}</a></td>
@@ -142,7 +142,7 @@
     <li><strong>Version: </strong>{{this.version}}</li>
 
     {{#if this.importance}}
-      <li><strong>Incident response time:</strong> <span title="Application importance: {{this.importance}}" class="importance {{this.importance}}"></span>
+      <li><strong>Incident response priority:</strong> <span title="Application importance: {{this.importance}}" class="importance {{this.importance}}"></span>
       {{this.importance}}</li>
     {{/if}}
     
