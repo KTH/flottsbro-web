@@ -42,6 +42,7 @@
 
     <thead>
       <tr>
+        <th>P</th>
         <th>Application</th>
         <th>Url</th>
         <th>Deployed</th>
@@ -53,7 +54,8 @@
 
       {{#each data}}
       <tr>
-        <td class="applicationName"><a href="#irt"><span title="Incident Response Priority: {{this.importance}}" class="importance {{this.importance}}"></span></a>
+        <td><span title="Incident Response Priority: {{this.importance}}" class="importance {{this.importance}}"><span class="text">{{this.importanceLevel}}</span></span></td>
+        <td class="applicationName"><a href="#irt"></a>
           <a href="#{{this.applicationName}}">{{this.friendlyName}}</a>
         </td>
         <td class="path"><a href="{{this.applicationUrl}}">{{this.applicationUrl}}</a></td>

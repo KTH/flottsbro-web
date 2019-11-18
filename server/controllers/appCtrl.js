@@ -28,11 +28,10 @@ function* getIndex(req, res, next) {
       });
     } else {
       client.getAsync(uri).then(response => {
-        cache.add("index", response.body, 5000);
         if (response.statusCode == 200) {
           res.render("index/index", {
             debug: "debug" in req.query,
-            data: response.body
+            data: addImportanceAsLevel(response.body)
           });
         } else {
           res.render("index/index", {
@@ -55,6 +54,21 @@ function* getIndex(req, res, next) {
   }
 }
 
+const addImportanceAsLevel = applications => {
+  const apps = applications.map(function(application) {
+    if (application.importance === "low") {
+      application.importanceLevel = 3;
+    } else if (application.importance === "high") {
+      application.importanceLevel = 1;
+    } else {
+      application.importanceLevel = 2;
+    }
+
+    return application;
+  });
+  cache.add("index", apps, 10000);
+  return apps;
+};
 module.exports = {
   getIndex: co.wrap(getIndex)
 };
