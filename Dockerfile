@@ -10,10 +10,10 @@ COPY ["config", "config"]
 COPY ["app.js", "app.js"]
 COPY ["server", "server"]
 
-COPY ["package-lock.json", "package-lock.json"]
 COPY ["package.json", "package.json"]
+COPY ["build.sh", "build.sh"]
 
-RUN npm run docker
+RUN ["npm", "run", "docker"]
 
 EXPOSE 3000
 
