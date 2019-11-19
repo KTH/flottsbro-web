@@ -164,12 +164,13 @@
 
   <script>
     $(function () {
+      const CREATED_COLUM = 3
       if ($(window).width() > 768) {
         $('#deployments').DataTable({
           paging: false,
           info: false,
           searching: false,
-          order: [[2, 'desc']],
+          order: [[CREATED_COLUM, 'desc']],
           columnDefs: []
         })
       }
