@@ -10,7 +10,7 @@ function getClusterName() {
     return process.env.DISPLAY_APPS_IN_CLUSTER;
   }
 
-  return "active";
+  return "reference";
 }
 
 function* getIndex(req, res, next) {
@@ -21,27 +21,22 @@ function* getIndex(req, res, next) {
       clusterName: getClusterName()
     });
 
-    if (cache.isValid("index")) {
-      res.render("index/index", {
-        debug: "debug" in req.query,
-        data: cache.get("index")
-      });
-    } else {
-      client.getAsync(uri).then(response => {
-        if (response.statusCode == 200) {
-          res.render("index/index", {
-            debug: "debug" in req.query,
-            data: addImportanceAsLevel(response.body)
-          });
-        } else {
-          res.render("index/index", {
-            debug: "debug" in req.query,
-            error:
-              "We are currently not able to show information about applications :("
-          });
-        }
-      });
-    }
+    console.log(uri);
+
+    client.getAsync(uri).then(response => {
+      if (response.statusCode == 200) {
+        res.render("index/index", {
+          debug: "debug" in req.query,
+          data: addImportanceAsLevel(response.body)
+        });
+      } else {
+        res.render("index/index", {
+          debug: "debug" in req.query,
+          error:
+            "We are currently not able to show information about applications :("
+        });
+      }
+    });
   } catch (err) {
     log.error("Unable to render deployments from the API.", {
       error: err

@@ -111,6 +111,7 @@ function _about(req, res) {
  * Monitor page
  */
 function _monitor(req, res) {
+  console.log("1");
   const apiConfig = config.nodeApi;
 
   // Check APIs
@@ -119,16 +120,19 @@ function _monitor(req, res) {
       monitor.interfaces.IHealthCheck,
       monitor.interfaces.names.KTH_NODE_API
     );
+    console.log("2");
     return apiHealthUtil.status(api[apiKey], {
       required: apiConfig[apiKey].required
     });
   });
 
   // Check Redis
+  console.log("3");
   const redisHealthUtil = registry.getUtility(
     monitor.interfaces.IHealthCheck,
     monitor.interfaces.names.KTH_NODE_REDIS
   );
+  console.log("4");
   subSystems.push(
     redisHealthUtil.status(
       require("kth-node-redis"),
@@ -141,19 +145,24 @@ function _monitor(req, res) {
 
   // Determine system health based on the results of the checks above. Expects
   // arrays of promises as input. This returns a promise
+  console.log("5");
   const systemHealthUtil = registry.getUtility(
     monitor.interfaces.IHealthCheck,
     monitor.interfaces.names.KTH_NODE_SYSTEM_CHECK
   );
+  console.log("6");
   const systemStatus = systemHealthUtil.status(null, subSystems);
 
+  console.log("7");
   systemStatus
     .then(status => {
       // Return the result either as JSON or text
+      console.log("8");
       if (req.headers["accept"] === "application/json") {
         let outp = systemHealthUtil.renderJSON(status);
         res.status(status.statusCode).json(outp);
       } else {
+        console.log("9");
         let outp = systemHealthUtil.renderText(status);
         res
           .type("text")
