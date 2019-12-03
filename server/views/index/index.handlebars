@@ -165,6 +165,8 @@
   <script>
     $(function () {
 
+      const ONE_MINUTE = 60 * 1000;
+
       const IMPORTANCE_COLUMN = 0;
       const CREATED_COLUM = 3;
       let sortOnColumn = CREATED_COLUM;
@@ -187,6 +189,10 @@
           columnDefs: []
         })
       }
+
+      setInterval(function() {
+        window.location.reload(true);
+      }, ONE_MINUTE; 
 
     })
   </script>
