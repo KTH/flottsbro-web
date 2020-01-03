@@ -21,8 +21,6 @@ function* getIndex(req, res, next) {
       clusterName: getClusterName()
     });
 
-    console.log(uri);
-
     client.getAsync(uri).then(response => {
       if (response.statusCode == 200) {
         res.render("index/index", {
