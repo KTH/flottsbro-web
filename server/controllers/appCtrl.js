@@ -23,7 +23,7 @@ function* getIndex(req, res, next) {
 
     client.getAsync(uri).then(response => {
       if (response.statusCode == 200) {
-        log.error(`Got applications from ${uri}.`);
+        log.info(`Got applications from ${uri}.`);
         res.render("index/index", {
           debug: "debug" in req.query,
           data: addImportanceAsLevel(response.body)
