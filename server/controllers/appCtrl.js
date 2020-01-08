@@ -23,11 +23,13 @@ function* getIndex(req, res, next) {
 
     client.getAsync(uri).then(response => {
       if (response.statusCode == 200) {
+        log.error(`Got applications from ${uri}.`);
         res.render("index/index", {
           debug: "debug" in req.query,
           data: addImportanceAsLevel(response.body)
         });
       } else {
+        log.error(`Could not get applications from ${uri}.`);
         res.render("index/index", {
           debug: "debug" in req.query,
           error:

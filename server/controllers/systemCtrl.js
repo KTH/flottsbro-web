@@ -119,17 +119,18 @@ function _monitor(req, res) {
       monitor.interfaces.IHealthCheck,
       monitor.interfaces.names.KTH_NODE_API
     );
+
     return apiHealthUtil.status(api[apiKey], {
       required: apiConfig[apiKey].required
     });
   });
 
   // Check Redis
-  console.log("3");
   const redisHealthUtil = registry.getUtility(
     monitor.interfaces.IHealthCheck,
     monitor.interfaces.names.KTH_NODE_REDIS
   );
+
   subSystems.push(
     redisHealthUtil.status(
       require("kth-node-redis"),
