@@ -55,7 +55,7 @@
       {{#each data}}
       <tr>
         <td><span title="Incident Response Priority: {{this.importance}}" class="importance {{this.importance}}"><span class="text">{{this.importanceLevel}}</span></span></td>
-        <td class="applicationName"><a href="#irt"></a>
+        <td class="applicationName"><a href="#importance"></a>
           <a href="#{{this.applicationName}}">{{this.friendlyName}}</a>
         </td>
         <td class="path"><a href="{{this.applicationUrl}}">{{this.applicationUrl}}</a></td>
@@ -149,11 +149,11 @@
     {{/if}}
     
     {{#if this.team}}
-      <li><strong>Responsible team: </strong>{{this.team}}</li></li>
+      <li><strong>Responsible team: </strong>{{this.team}}</li>
     {{/if}}
 
     {{#if this.cluster}}
-      <li><strong>Running in: </strong>{{this.cluster}}</li></li>
+      <li><strong>Running in: </strong>{{this.cluster}}</li>
     {{/if}}
 
     </ul>
