@@ -173,9 +173,9 @@
       let sortType = 'desc'
 
       const params = (new URL(document.location)).searchParams;
-      const sort = params.get("sort");
+      const importance = params.get("importance");
 
-      if (sort && sort === "importance") {
+      if (importance && importance === "high") {
         sortOnColumn = IMPORTANCE_COLUMN;
         sortType = 'asc'
       }
@@ -189,11 +189,11 @@
           columnDefs: []
         })
       }
-
-      setInterval(function() {
-        window.location.reload(true);
-      }, ONE_MINUTE);
-
+      if (!importance) {
+        setInterval(function() {
+          window.location.reload(true);
+        }, ONE_MINUTE);
+      }
     })
   </script>
 
