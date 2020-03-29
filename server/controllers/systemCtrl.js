@@ -135,7 +135,7 @@ function _monitor(req, res) {
     redisHealthUtil.status(
       require("kth-node-redis"),
       config.cache.pipelineApi.redis,
-      { required: true }
+      { required: false }
     )
   );
 
