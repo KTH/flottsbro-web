@@ -11,7 +11,7 @@ const {
   getEnv,
   devDefaults,
   unpackRedisConfig,
-  unpackNodeApiConfig
+  unpackNodeApiConfig,
 } = require("kth-node-configuration");
 const { safeGet } = require("safe-utils");
 
@@ -34,27 +34,27 @@ module.exports = {
   ssl: {
     // In development we don't have SSL feature enabled
     pfx: getEnv("SERVER_CERT_FILE", ""),
-    passphrase: getEnv("SERVER_CERT_PASSPHRASE", "")
+    passphrase: getEnv("SERVER_CERT_PASSPHRASE", ""),
   },
 
   // API keys
   apiKey: {
-    pipelineApi: getEnv("API_KEY", devDefaults("1234"))
+    pipelineApi: getEnv("API_KEY_0", devDefaults("1234")),
   },
 
   // Authentication
   auth: {
-    adminGroup: "app.pipeline.admin"
+    adminGroup: "app.pipeline.admin",
   },
   cas: {
-    ssoBaseURL: getEnv("CAS_SSO_URI", devSsoBaseURL)
+    ssoBaseURL: getEnv("CAS_SSO_URI", devSsoBaseURL),
   },
 
   nodeApi: {
     pipelineApi: unpackNodeApiConfig(
       "API_URI",
       "http://localhost:3001/api/pipeline?defaultTimeout=10000&required=true"
-    )
+    ),
   },
 
   // Cortina
@@ -64,31 +64,31 @@ module.exports = {
       devDefaults("https://www-r.referens.sys.kth.se/cm/")
     ), // Block API base URL
     headers: {
-      "User-Agent": getEnv("CM_USER_AGENT", devDefaults("kth")) // Set User-Agent as an access token when fetching Cortina Blocks
-    }
+      "User-Agent": getEnv("CM_USER_AGENT", devDefaults("kth")), // Set User-Agent as an access token when fetching Cortina Blocks
+    },
   },
 
   // Logging
   logging: {
     log: {
-      level: getEnv("LOGGING_LEVEL", "debug")
+      level: getEnv("LOGGING_LEVEL", "debug"),
     },
     accessLog: {
-      useAccessLog: getEnv("LOGGING_ACCESS_LOG", false)
-    }
+      useAccessLog: getEnv("LOGGING_ACCESS_LOG", false),
+    },
   },
   clientLogging: {
-    level: "warn"
+    level: "warn",
   },
 
   cache: {
     cortinaBlock: {
-      redis: unpackRedisConfig("REDIS_URI", devRedis)
+      redis: unpackRedisConfig("REDIS_URI", devRedis),
     },
     pipelineApi: {
       redis: unpackRedisConfig("REDIS_URI", devRedis),
-      expireTime: 60000
-    }
+      expireTime: 60000,
+    },
   },
 
   // Session
@@ -101,12 +101,14 @@ module.exports = {
     sessionOptions: {
       // do not set session secret here!!
       cookie: {
-        secure: safeGet(() => getEnv("SESSION_SECURE_COOKIE", false) === "true")
-      }
+        secure: safeGet(
+          () => getEnv("SESSION_SECURE_COOKIE", false) === "true"
+        ),
+      },
     },
-    redisOptions: unpackRedisConfig("REDIS_URI", devRedis)
+    redisOptions: unpackRedisConfig("REDIS_URI", devRedis),
   },
   appInsights: {
-    instrumentationKey: getEnv("APPINSIGHTS_INSTRUMENTATIONKEY")
-  }
+    instrumentationKey: getEnv("APPINSIGHTS_INSTRUMENTATIONKEY"),
+  },
 };
