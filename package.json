@@ -45,11 +45,11 @@
     "kth-node-ldap": "^3.1.1",
     "kth-node-log": "^3.1.0",
     "kth-node-monitor": "^1.1.6",
-    "kth-node-redis": "^3.1.5",
+    "kth-node-redis": "^3.1.6",
     "kth-node-response": "KTH/kth-node-response#v1.0.0",
     "kth-node-server": "^3.1.2",
     "kth-node-session": "^1.0.4",
-    "kth-node-web-common": "^4.0.2",
+    "kth-node-web-common": "4.0.2",
     "kth-style": "^4.3.6",
     "safe-utils": "^0.2.1",
     "webpack": "^4.43.0"
