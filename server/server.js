@@ -39,7 +39,7 @@ let logConfiguration = {
   level: config.logging.log.level,
   console: config.logging.console,
   stdout: config.logging.stdout,
-  src: config.logging.src
+  src: config.logging.src,
 };
 log.init(logConfiguration);
 
@@ -57,7 +57,7 @@ server.engine(
   exphbs({
     defaultLayout: "publicLayout",
     layoutsDir: server.settings.layouts,
-    partialsDir: server.settings.partials
+    partialsDir: server.settings.partials,
   })
 );
 server.set("view engine", "handlebars");
@@ -95,7 +95,7 @@ function setCustomCacheControl(res, path) {
 server.use(
   config.proxyPrefixPath.uri + "/static/js/components",
   express.static("./dist/js/components", {
-    setHeaders: setCustomCacheControl
+    setHeaders: setCustomCacheControl,
   })
 );
 // Expose browser configurations
@@ -111,7 +111,7 @@ server.use(
 // Map static content like images, css and js.
 server.use(config.proxyPrefixPath.uri + "/static", express.static("./dist"));
 // Return 404 if static file isn't found so we don't go through the rest of the pipeline
-server.use(config.proxyPrefixPath.uri + "/static", function(req, res, next) {
+server.use(config.proxyPrefixPath.uri + "/static", function (req, res, next) {
   var error = new Error("File not found: " + req.originalUrl);
   error.statusCode = 404;
   next(error);
@@ -130,7 +130,7 @@ const cookieParser = require("cookie-parser");
 server.use(bodyParser.json());
 server.use(
   bodyParser.urlencoded({
-    extended: true
+    extended: true,
   })
 );
 server.use(cookieParser());
@@ -162,9 +162,7 @@ server.use(
     proxyPrefixPath: config.proxyPrefixPath.uri,
     hostUrl: config.hostUrl,
     redisConfig: config.cache.cortinaBlock.redis,
-    blocks: {
-      secondaryMenu: "1.822592"
-    }
+    blocks: {},
   })
 );
 
@@ -177,7 +175,7 @@ const excludeExpression = new RegExp(excludePath);
 server.use(
   excludeExpression,
   require("kth-node-web-common/lib/web/crawlerRedirect")({
-    hostUrl: config.hostUrl
+    hostUrl: config.hostUrl,
   })
 );
 
@@ -213,7 +211,7 @@ const appRoute = AppRouter();
 appRoute.get("system.index", config.proxyPrefixPath.uri + "/", App.getIndex);
 server.use("/", appRoute.getRouter());
 
-server.get("/favicon.ico", function(req, res) {
+server.get("/favicon.ico", function (req, res) {
   res.send("");
 });
 

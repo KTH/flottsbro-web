@@ -59,10 +59,7 @@ module.exports = {
 
   // Cortina
   blockApi: {
-    blockUrl: getEnv(
-      "CM_HOST_URL",
-      devDefaults("https://www-r.referens.sys.kth.se/cm/")
-    ), // Block API base URL
+    blockUrl: getEnv("CM_HOST_URL", devDefaults("https://www.kth.se/cm/")), // Block API base URL
     headers: {
       "User-Agent": getEnv("CM_USER_AGENT", devDefaults("kth")), // Set User-Agent as an access token when fetching Cortina Blocks
     },

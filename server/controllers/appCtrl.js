@@ -1,7 +1,6 @@
 "use strict";
 
 const api = require("../api");
-const co = require("co");
 const log = require("kth-node-log");
 const cache = require("@kth/in-memory-cache");
 
@@ -13,7 +12,7 @@ function getClusterName() {
   return "reference";
 }
 
-function* getIndex(req, res, next) {
+function getIndex(req, res, next) {
   try {
     const client = api.pipelineApi.client;
     const paths = api.pipelineApi.paths;
@@ -67,5 +66,5 @@ const addImportanceAsLevel = (applications) => {
   return apps;
 };
 module.exports = {
-  getIndex: co.wrap(getIndex),
+  getIndex: getIndex,
 };

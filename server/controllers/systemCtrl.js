@@ -11,8 +11,6 @@ const getPaths = require("kth-node-express-routing").getPaths;
 const language = require("kth-node-web-common/lib/language");
 const i18n = require("../../i18n");
 const api = require("../api");
-const co = require("co");
-const Promise = require("bluebird");
 const registry = require("component-registry").globalRegistry;
 const monitor = require("kth-node-monitor");
 const started = new Date();
@@ -23,12 +21,12 @@ const started = new Date();
  */
 
 module.exports = {
-  monitor: co.wrap(_monitor),
+  monitor: _monitor,
   about: _about,
   robotsTxt: _robotsTxt,
   paths: _paths,
   notFound: _notFound,
-  final: _final
+  final: _final,
 };
 
 /**
@@ -45,7 +43,7 @@ function _notFound(req, res, next) {
 function _final(err, req, res, next) {
   log.error(
     {
-      err: err
+      err: err,
     },
     `Unhandled error ${err}`
   );
@@ -62,7 +60,7 @@ function _final(err, req, res, next) {
         friendly: _getFriendlyErrorMessage(lang, statusCode),
         error: isProd ? {} : err,
         status: statusCode,
-        debug: "debug" in req.query
+        debug: "debug" in req.query,
       });
     },
 
@@ -70,7 +68,7 @@ function _final(err, req, res, next) {
       res.status(statusCode).json({
         message: err.message,
         friendly: _getFriendlyErrorMessage(lang, statusCode),
-        error: isProd ? undefined : err.stack
+        error: isProd ? undefined : err.stack,
       });
     },
 
@@ -79,7 +77,7 @@ function _final(err, req, res, next) {
         .status(statusCode)
         .type("text")
         .send(isProd ? err.message : err.stack);
-    }
+    },
   });
 }
 
@@ -103,7 +101,7 @@ function _about(req, res) {
     dockerVersion: JSON.stringify(version.dockerVersion),
     language: language.getLanguage(res),
     started: started,
-    env: require("../server").get("env")
+    env: require("../server").get("env"),
   });
 }
 
@@ -114,30 +112,16 @@ function _monitor(req, res) {
   const apiConfig = config.nodeApi;
 
   // Check APIs
-  const subSystems = Object.keys(api).map(apiKey => {
+  const subSystems = Object.keys(api).map((apiKey) => {
     const apiHealthUtil = registry.getUtility(
       monitor.interfaces.IHealthCheck,
       monitor.interfaces.names.KTH_NODE_API
     );
 
     return apiHealthUtil.status(api[apiKey], {
-      required: apiConfig[apiKey].required
+      required: apiConfig[apiKey].required,
     });
   });
-
-  // Check Redis
-  const redisHealthUtil = registry.getUtility(
-    monitor.interfaces.IHealthCheck,
-    monitor.interfaces.names.KTH_NODE_REDIS
-  );
-
-  subSystems.push(
-    redisHealthUtil.status(
-      require("kth-node-redis"),
-      config.cache.pipelineApi.redis,
-      { required: false }
-    )
-  );
 
   /* -- You will normally not change anything below this line -- */
 
@@ -150,23 +134,17 @@ function _monitor(req, res) {
   const systemStatus = systemHealthUtil.status(null, subSystems);
 
   systemStatus
-    .then(status => {
+    .then((status) => {
       if (req.headers["accept"] === "application/json") {
         let outp = systemHealthUtil.renderJSON(status);
         res.status(status.statusCode).json(outp);
       } else {
         let outp = systemHealthUtil.renderText(status);
-        res
-          .type("text")
-          .status(status.statusCode)
-          .send(outp);
+        res.type("text").status(status.statusCode).send(outp);
       }
     })
-    .catch(err => {
-      res
-        .type("text")
-        .status(500)
-        .send(err);
+    .catch((err) => {
+      res.type("text").status(500).send(err);
     });
 }
 
