@@ -18,39 +18,41 @@ function* getIndex(req, res, next) {
     const client = api.pipelineApi.client;
     const paths = api.pipelineApi.paths;
     const uri = client.resolve(paths.getLatestByClusterName.uri, {
-      clusterName: getClusterName()
+      clusterName: getClusterName(),
     });
 
-    client.getAsync(uri).then(response => {
+    log.info(`Fetching from url '${uri}'`);
+
+    client.getAsync(uri).then((response) => {
       if (response.statusCode == 200) {
         log.info(`Got applications from ${uri}.`);
         res.render("index/index", {
           debug: "debug" in req.query,
-          data: addImportanceAsLevel(response.body)
+          data: addImportanceAsLevel(response.body),
         });
       } else {
         log.error(`Could not get applications from ${uri}.`);
         res.render("index/index", {
           debug: "debug" in req.query,
           error:
-            "We are currently not able to show information about applications :("
+            "We are currently not able to show information about applications :(",
         });
       }
     });
   } catch (err) {
     log.error("Unable to render deployments from the API.", {
-      error: err
+      error: err,
     });
     res.render("index/index", {
       debug: "debug" in req.query,
       error:
-        "We are currently not able to show information about applications :("
+        "We are currently not able to show information about applications :(",
     });
   }
 }
 
-const addImportanceAsLevel = applications => {
-  const apps = applications.map(function(application) {
+const addImportanceAsLevel = (applications) => {
+  const apps = applications.map(function (application) {
     if (application.importance === "low") {
       application.importanceLevel = 3;
     } else if (application.importance === "high") {
@@ -65,5 +67,5 @@ const addImportanceAsLevel = applications => {
   return apps;
 };
 module.exports = {
-  getIndex: co.wrap(getIndex)
+  getIndex: co.wrap(getIndex),
 };
