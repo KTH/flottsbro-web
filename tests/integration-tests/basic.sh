@@ -1,24 +1,69 @@
 #!/bin/bash
 
-error() { printf "\n \033[0;31mERROR: $@\033[0;0m | $(date) \n"; }
-passed() { printf "\n \033[0;32m   OK: $@\033[0;0m | $(date) \n\n"; }
+info() { printf "\033[1;31m\n   %s\033[0;0m$@\n\n";  }
+error() { printf "\033[0;31m\n • $@\033[0;0m"; }
+passed() { printf "\033[0;32m • $@\033[0;0m\n"; }
 
-# /redis will connect to redis and say OK, if it works.
-MONITOR_URL="http://web/_monitor";
-PATTERN="development"
-
-sleep 5s
-
-RESPONSE=`curl -s -S --max-time 30 $MONITOR_URL`
-
-echo $RESPONSE
-
-if [[ "$RESPONSE" != *"$PATTERN"* ]]; then
-    error "URL '$MONITOR_URL' does not contain '$PATTERN'."
-    exit -1
+#
+# Path to the Cisco vpn client.
+#
+if [ -z "$URL_PREFIX" ]; then
+    URL_PREFIX="http://web/pipeline"
+    sleep 5s
 fi
 
-passed "Basic test passed for '$MONITOR_URL'."
+FAILED=""
 
-exit 0
+#
+# Curls a url and tests if the response contains a string.
+# If it fails sets FAILED to true.
+#
+# Usage: expectPathToContain "/_monitor" "active"
+#
+expectPathToContain() {
+    
+    ENDPOINT="$1"
+    PATTERN="$2"
+    TEST_DESCRIPTION="$3"
+    
+    TEST_URL="$URL_PREFIX$ENDPOINT"
+
+    curl -k -S --max-time 3 $TEST_URL > .curl.log 2>&1
+    RESULT=$(cat .curl.log)
+    
+    if [[ "$RESULT" == *"$PATTERN"* ]]; then
+        if [ ! -z "$TEST_DESCRIPTION" ]; then
+            passed "$TEST_DESCRIPTION."
+        else 
+            passed "$TEST_URL contains $PATTERN"
+        fi
+ 
+    else
+        if [ ! -z "$TEST_DESCRIPTION" ]; then
+            error "$TEST_DESCRIPTION"
+        fi
+        info "'$TEST_URL' does not contain pattern '$PATTERN'."
+        
+        FAILED="true"
+    fi
+
+}
+
+# ---------------- Tests ----------------
+
+expectPathToContain "/_monitor" "APPLICATION_STATUS: OK" "Default check APPLICATION_STATUS: OK"
+expectPathToContain "/_about" "Docker image" "The about page should show Docker images information"
+expectPathToContain "/" "Application" "The index pages should include a title"
+expectPathToContain "/missing-page" "Sorry, we have nothing to show" "The 404 pages should show a title"
+
+
+# Result
+if [[ "$FAILED" != *"true"* ]]; then
+    info "All end-to-end tests passed."
+    exit 0
+else
+    echo ""
+    exit 1
+fi
+
 
