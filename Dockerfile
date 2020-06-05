@@ -11,6 +11,6 @@ COPY ["config", "config"]
 COPY ["modules", "modules"]
 COPY ["app.js", "app.js"]
 
-EXPOSE 80
+EXPOSE 3000
 
 CMD ["npm", "start"]

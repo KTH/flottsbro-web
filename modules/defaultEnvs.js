@@ -10,7 +10,7 @@ const logger = require("./logger");
  */
 const DEFAULTS = {
   LOG_LEVEL: "info",
-  PORT: 80,
+  PORT: 3000,
   PREFIX_PATH: "/pipeline",
   API_HOST: "https://api.kth.se",
   APPINSIGHTS_INSTRUMENTATIONKEY: "",
