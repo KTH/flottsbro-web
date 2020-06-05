@@ -8,7 +8,7 @@ const html = (applications) => {
   );
   return `
 
-    <link href="/css/kth-bootstrap.min.css" media="screen" rel="stylesheet">
+    <link href="/pipeline/css/kth-bootstrap.min.css" media="screen" rel="stylesheet">
     <script src="//code.jquery.com/jquery-1.11.3.js"></script>
     <script src="//momentjs.com/downloads/moment.min.js"></script>
     <script src="//cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
