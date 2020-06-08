@@ -7,9 +7,8 @@ body {
   font-size: 1.2rem;
 }
 .wrapper {
-  padding: 10px;
   font-family: arial, helvetica;
-  padding: 30px 40px 40px;
+  padding: 0px 40px 40px;
   max-width: 100%;
   margin: 30px auto;
 }
@@ -182,4 +181,11 @@ h3 .applicationName {
 
 .application ul {
   margin-top: 1rem;
+}
+
+#lead {
+  margin-top: 0.8rem;
+}
+#home-logotype {
+  display: none;
 }

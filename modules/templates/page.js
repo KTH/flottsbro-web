@@ -14,14 +14,18 @@ const html = (applications) => {
     <script src="//cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
 
-    <h1>Incident response priorities for IT services</h1>
-
-    <div class="lead">
-        <p>These are the services, web and apis developed by IT-department at KTH.</p>
+    <div class="row">
+        <div class="col-4">
+          <a href="https://www.kth.se/"><img width=76 height=76 src="/pipeline/img/kth-logotype.svg" alt="KTH Logotype"></a>
+        </div>
+        <div class="col-8">
+          <h1>Incident response priorities</h1>
+        </div>
     </div>
 
+
     <a name="importance"></a>
-    <p>
+    <p id="lead">
         The coloured circles indicates how fast the Operations or Support team start working on the service incase of an outage.
         You can see each service classification bellow.
 
@@ -65,7 +69,7 @@ const html = (applications) => {
       if (!params.get("importance")) {
         setInterval(function() {
           
-          fetch('/table')
+          fetch('/pipeline/table')
             .then(
               function(response) {
                 if (response.status !== 200) {
@@ -76,7 +80,7 @@ const html = (applications) => {
 
                 response.text().then(function(data) {
                   console.log('Replacing table with new html ...')
-                  $("#table").replaceWith(data + "<tr><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr>");
+                  $("#deployments").replaceWith(data);
                 });
               }
             )
@@ -85,7 +89,7 @@ const html = (applications) => {
             });
 
 
-        }, 15000);
+        }, 3000);
       }
     })
 
