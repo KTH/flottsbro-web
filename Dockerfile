@@ -9,6 +9,7 @@ RUN npm audit fix && \
 
 COPY ["config", "config"]
 COPY ["modules", "modules"]
+COPY ["public", "public"]
 COPY ["app.js", "app.js"]
 
 EXPOSE 3000
