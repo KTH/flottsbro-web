@@ -24,7 +24,7 @@
   },
   "scripts": {
     "start": "CSS_URI=/css/overrides.css node app.js",
-    "start-dev": "CSS_URI='/css/overrides.css' nodemon app.js",
+    "start-dev": "CSS_URI='/pipeline/css/overrides.css' nodemon app.js",
     "test": "NODE_ENV=development node_modules/mocha/bin/mocha ./tests/unit-tests/test-*.js",
     "test-integration": "URL_PREFIX=http://localhost/pipeline ./tests/integration-tests/basic.sh",
     "test-integration-in-docker": "ID=$(docker build -q .) && LOCAL_IMAGE_ID=$ID docker-compose -f docker-compose-integration-tests.yml build && LOCAL_IMAGE_ID=$ID docker-compose -f docker-compose-integration-tests.yml up --force-recreate --abort-on-container-exit --always-recreate-deps",

@@ -102,7 +102,10 @@ app.get(`${process.env.PREFIX_PATH}/favicon.ico`, function (request, response) {
   httpResponse.noContent(request, response);
 });
 
-app.use(express.static("public"));
+/**
+ * Serve static file like css or javascript.
+ */
+app.use("/pipeline", express.static("public"));
 
 /**
  * Default route, if no other route is matched (404 Not Found).
