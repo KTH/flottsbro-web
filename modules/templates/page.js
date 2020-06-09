@@ -48,8 +48,8 @@ const html = (applications) => {
     </div>
 
       <div id="table">
-    ${table.html(applications)}
-</div>
+        ${table.html(applications)}
+      </div>
     <div aria-live="polite" role="alert" class="alert alert-info">
         <h2>Is something not working?</h2>
 
@@ -64,6 +64,8 @@ const html = (applications) => {
     <p>Applications deployed: <i>${applications.length}</i></p>
 
     <script>
+    let REFRESH_INTERVAL = 60 * 1000; // 1 minute
+
     $(function () {
 
       if (!params.get("importance")) {
@@ -80,7 +82,8 @@ const html = (applications) => {
 
                 response.text().then(function(data) {
                   console.log('Replacing table with new html ...')
-                  $("#deployments").replaceWith(data);
+                  $("#deployments").remove();
+                  $("#table").append(data);
                 });
               }
             )
@@ -89,7 +92,7 @@ const html = (applications) => {
             });
 
 
-        }, 3000);
+        }, REFRESH_INTERVAL);
       }
     })
 

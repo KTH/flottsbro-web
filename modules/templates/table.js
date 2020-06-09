@@ -1,6 +1,15 @@
 const logger = require("../logger");
 const api = require("../api");
 
+const getImportanceAsInteger = (application) => {
+  if (application.importance === "low") {
+    return 3;
+  } else if (application.importance === "high") {
+    return 1;
+  }
+  return 2;
+};
+
 const getUrl = (application) => {
   if (application.applicationUrl) {
     return `<a href="${application.applicationUrl}">${application.applicationUrl}</a>`;
@@ -19,7 +28,9 @@ const getRows = (applications) => {
               application.importance
             }" class="importance ${
       application.importance
-    }"><span class="text">${application.importanceLevel}</span></span></td>
+    }"><span class="text">${getImportanceAsInteger(
+      application
+    )}</span></span></td>
             <td class="applicationName"><a href="#importance"></a>
                 <a href="#${application.applicationName}">${
       application.friendlyName
