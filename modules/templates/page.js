@@ -2,6 +2,19 @@ const logger = require("../logger");
 const table = require("./table");
 const description = require("./description");
 
+const getLove = () => {
+  if (process.env.DISPLAY_APPS_IN_CLUSTER != "production") {
+    return "";
+  }
+
+  return `<div id="love">
+  <div id="tagline">Utveckling <span class="heart">❤️</span> Operations</div>
+
+  <p>Glad sommar vänner!</p>
+
+</div>`;
+};
+
 const html = (applications) => {
   logger.log.debug(
     `Get index page showing ${applications.length} applications.`
@@ -14,13 +27,8 @@ const html = (applications) => {
     <script src="//cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
 
-    <div id="love">
-    <div id="tagline">Utveckling <span class="heart">❤️</span> Operations</div>
-  
-    <p>Glad sommar vänner!</p>
- 
-  </div>
-  
+    ${getLove()}
+
     <div class="row">
         <div class="col-4">
           <a href="https://www.kth.se/"><img width=76 height=76 src="/pipeline/img/kth-logotype.svg" alt="KTH Logotype"></a>
