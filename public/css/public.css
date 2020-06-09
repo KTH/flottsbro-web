@@ -199,3 +199,40 @@ table#deployments.dataTable thead th, table#deployments.dataTable thead td {
   padding-right: 20px;
 }
 
+#love {
+ 
+}
+
+#tagline {
+  font-size: 3.5rem;
+  text-align: center;
+  height: 3.5rem;
+  line-height: 3.5rem;
+}
+
+#love p {
+ font-size: 2rem;
+ text-align: center;
+ height: 3.5rem;
+ line-height: 3.5rem;
+}
+
+@keyframes changeFontSize {
+  from {
+    font-size: 2rem;
+  }
+
+  to {
+    font-size: 3rem;
+  }
+}
+
+#love .heart {
+  width: 4rem;
+  display: inline-block;
+  text-align: center;
+  animation-duration: 2s;
+  animation-name: changeFontSize;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}

@@ -14,6 +14,13 @@ const html = (applications) => {
     <script src="//cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
 
+    <div id="love">
+    <div id="tagline">Utveckling <span class="heart">❤️</span> Operations</div>
+  
+    <p>Glad sommar vänner!</p>
+ 
+  </div>
+  
     <div class="row">
         <div class="col-4">
           <a href="https://www.kth.se/"><img width=76 height=76 src="/pipeline/img/kth-logotype.svg" alt="KTH Logotype"></a>
