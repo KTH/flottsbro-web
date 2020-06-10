@@ -54,6 +54,9 @@ const getRows = (applications) => {
 
 const html = (applications) => {
   return `
+    <div id="tableWrapper">
+
+    <div id="reload"></div>
 
     <table id="deployments">
         <thead>
@@ -98,7 +101,7 @@ const html = (applications) => {
     } );
 
     </script>
-
+    </div>
     `;
 };
 

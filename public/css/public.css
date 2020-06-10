@@ -5,6 +5,7 @@ body {
   font-weight: 400;
   line-height: 1.4375;
   font-size: 1.0rem;
+  counter-reset: my-sec-counter;
 }
 .wrapper {
   font-family: arial, helvetica;
@@ -225,6 +226,29 @@ table#deployments.dataTable thead th, table#deployments.dataTable thead td {
   to {
     font-size: 3rem;
   }
+}
+
+@keyframes drawLine {
+  from {
+    width: 0%;
+    background-color: #f6f6f6;
+  }
+  
+  to {
+    width: 100%;
+    background-color: #5e87c0;
+  }  
+}
+
+
+#reload {
+  width: 0%;
+  height: 10px;
+  margin-bottom: 1px;
+  animation-duration: 32s;
+  animation-name: drawLine;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
 
 #love .heart {

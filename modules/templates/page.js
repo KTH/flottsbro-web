@@ -79,7 +79,7 @@ const html = (applications) => {
     <p>Applications deployed: <i>${applications.length}</i></p>
 
     <script>
-    let REFRESH_INTERVAL = 60 * 1000; // 1 minute
+    let REFRESH_INTERVAL = 30 * 1000; // 30 sec
 
     $(function () {
 
@@ -97,7 +97,7 @@ const html = (applications) => {
 
                 response.text().then(function(data) {
                   console.log('Replacing table with new html ...')
-                  $("#deployments").remove();
+                  $("#tableWrapper").remove();
                   $("#table").append(data);
                 });
               }
