@@ -79,8 +79,14 @@ const html = (applications) => {
     <p>Applications deployed: <i>${applications.length}</i></p>
 
     <script>
-    let REFRESH_INTERVAL = 60 * 1000; // 1 minute
+    let ONE_MINUTE = 60 * 1000;
+    let ONE_HOUR = ONE_MINUTE * 60;
 
+    setInterval(function() {
+      window.location.reload(true);
+    }, ONE_HOUR);
+
+   
     $(function () {
 
       if (!params.get("importance")) {
@@ -107,7 +113,7 @@ const html = (applications) => {
             });
 
 
-        }, REFRESH_INTERVAL);
+        }, ONE_MINUTE);
       }
     })
 
