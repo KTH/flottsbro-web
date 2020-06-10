@@ -79,7 +79,7 @@ const html = (applications) => {
     <p>Applications deployed: <i>${applications.length}</i></p>
 
     <script>
-    let REFRESH_INTERVAL = 30 * 1000; // 30 sec
+    let REFRESH_INTERVAL = 60 * 1000; // 1 minute
 
     $(function () {
 

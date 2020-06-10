@@ -245,7 +245,7 @@ table#deployments.dataTable thead th, table#deployments.dataTable thead td {
   width: 0%;
   height: 10px;
   margin-bottom: 1px;
-  animation-duration: 32s;
+  animation-duration: 62s;
   animation-name: drawLine;
   animation-iteration-count: infinite;
   animation-direction: alternate;
