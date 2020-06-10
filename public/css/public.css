@@ -235,7 +235,6 @@ table#deployments.dataTable thead th, table#deployments.dataTable thead td {
   
   to {
     width: 100%;
-    
   }  
 }
 
@@ -243,8 +242,7 @@ table#deployments.dataTable thead th, table#deployments.dataTable thead td {
 #reload {
   width: 0%;
   height: 5px;
-  background-color: #f6f6f6;
-
+  background-color: #006cb7;
   margin-bottom: 1px;
   animation-duration: 62s;
   animation-name: drawLine;
