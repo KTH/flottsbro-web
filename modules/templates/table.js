@@ -86,19 +86,13 @@ const html = (applications) => {
         sortType = 'asc'
       }
 
-      if ($(window).width() > 768) {
-        $('#deployments').DataTable({
-          paging: false,
-          info: false,
-          searching: false,
-          order: [[sortOnColumn, sortType]],
-          columnDefs: []
-        })
-      }
-
-      $(document).ready( function () {
-        $('#deployments').DataTable();
-    } );
+      $('#deployments').DataTable({
+        paging: false,
+        info: false,
+        searching: false,
+        scrollX: true,
+        order: [[sortOnColumn, sortType]],
+      })
 
     </script>
     </div>
