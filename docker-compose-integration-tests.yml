@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+
+  web:
+    image: $LOCAL_IMAGE_ID
+    
+    ports:
+      - 3000
+
+  integration-tests:
+    build: ./tests/integration-tests

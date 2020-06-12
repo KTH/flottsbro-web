@@ -8,7 +8,7 @@ passed() { printf "\033[0;32m • $@\033[0;0m\n"; }
 # Path to the Cisco vpn client.
 #
 if [ -z "$URL_PREFIX" ]; then
-    URL_PREFIX="http://web/pipeline"
+    URL_PREFIX="http://web:3000/pipeline"
     sleep 5s
 fi
 
@@ -51,6 +51,8 @@ expectPathToContain() {
 
 # ---------------- Tests ----------------
 
+expectPathToContain "/" "Incident response priorities" "Index should contain title."
+expectPathToContain "/" "Continuous Delivery Reference Application" "Index should contain Continuous Delivery Reference Application application data."
 expectPathToContain "/_monitor" "APPLICATION_STATUS: OK" "Default check APPLICATION_STATUS: OK"
 expectPathToContain "/_about" "Docker image" "The about page should show Docker images information"
 expectPathToContain "/" "Application" "The index pages should include a title"
