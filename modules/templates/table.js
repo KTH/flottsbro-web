@@ -90,7 +90,6 @@ const html = (applications) => {
         paging: false,
         info: false,
         searching: false,
-        scrollX: true,
         order: [[sortOnColumn, sortType]],
       })
 
