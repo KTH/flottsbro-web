@@ -3,16 +3,17 @@ const table = require("./table");
 const description = require("./description");
 
 const getLove = () => {
-  if (process.env.DISPLAY_APPS_IN_CLUSTER != "production") {
-    return "";
-  }
+  return "";
+  // if (process.env.DISPLAY_APPS_IN_CLUSTER != "production") {
+  //   return "";
+  // }
 
-  return `<div id="love">
-  <div id="tagline">Utveckling <span class="heart">❤️</span> Operations</div>
+  // return `<div id="love">
+  // <div id="tagline">Utveckling <span class="heart">❤️</span> Operations</div>
 
-  <p>Glad sommar vänner!</p>
+  // <p>Glad sommar vänner!</p>
 
-</div>`;
+  // </div>`;
 };
 
 const html = (applications) => {
