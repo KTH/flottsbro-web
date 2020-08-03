@@ -17,6 +17,9 @@ const getApplications = async () => {
     logger.log.debug(`Calling api endpoint '${getUri()}'.`);
     const response = await axios.get(getUri());
     result = await response.data;
+    if (result === null) {
+      result = [];
+    }
     cache.add(getUri(), result, CACHE_TTL);
   } catch (error) {
     logger.log.error(error);
