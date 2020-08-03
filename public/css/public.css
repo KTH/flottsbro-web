@@ -263,3 +263,8 @@ table#deployments.dataTable thead th, table#deployments.dataTable thead td {
 body {
   background-image: url('/pipeline/img/pride.png');
 }
+
+.application {
+  padding: 5px;
+  background-color: white;
+}
