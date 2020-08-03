@@ -10,7 +10,7 @@ const getImportanceAsInteger = (application) => {
   return 2;
 };
 
-const getUrl = (application) => {
+const getLink = (application) => {
   if (application.applicationUrl) {
     return `<a href="${application.applicationUrl}">${application.applicationUrl}</a>`;
   }
@@ -36,7 +36,7 @@ const getRows = (applications) => {
       application.friendlyName
     }</a>
             </td>
-            <td class="path">${getUrl(application)}</a></td>
+            <td class="path">${getLink(application)}</td>
             <td class="created"><span style="display: none">${
               application.created
             }</span><span id="created${index}">${
