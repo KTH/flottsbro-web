@@ -259,3 +259,7 @@ table#deployments.dataTable thead th, table#deployments.dataTable thead td {
   animation-iteration-count: infinite;
   animation-direction: alternate;
 }
+
+body {
+  background-image: url('/pipeline/img/pride.png');
+}
