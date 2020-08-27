@@ -1,26 +1,27 @@
 {
   "name": "flottsbro-web",
   "version": "0.1.0",
-  "description": "Default paths and error pages for uri:s.",
+  "description": "Incident response priorities for KTH applications",
   "main": "app.js",
   "private": false,
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/KTH/tamarack.git"
+    "url": "git://github.com/KTH/flottsbro-web.git"
   },
   "dependencies": {
-    "@kth/basic-html-templates": "^1.0.10",
-    "@kth/http-responses": "^1.0.6",
+    "@kth/basic-html-templates": "^1.0.16",
+    "@kth/http-responses": "^1.0.17",
     "@kth/in-memory-cache": "^0.1.2",
-    "applicationinsights": "^1.8.3",
-    "axios": "^0.19.2",
+    "applicationinsights": "^1.8.5",
+    "axios": "^0.20.0",
     "express": "^4.17.1",
     "kth-node-log": "^3.1.0"
   },
   "scripts": {
     "start": "CSS_URI='/pipeline/css/public.css' node app.js",
     "start-dev": "LOG_LEVEL='debug' CSS_URI='/pipeline/css/public.css' nodemon app.js",
+    "clean": "rm -r ./node_modules && rm package-lock.json",
     "test": "NODE_ENV=development node_modules/mocha/bin/mocha ./tests/unit-tests/test-*.js",
     "test-integration": "URL_PREFIX=http://localhost:3000/pipeline ./tests/integration-tests/basic.sh",
     "test-integration-in-docker": "ID=$(docker build -q .) && LOCAL_IMAGE_ID=$ID docker-compose -f docker-compose-integration-tests.yml build && LOCAL_IMAGE_ID=$ID docker-compose -f docker-compose-integration-tests.yml up --force-recreate --abort-on-container-exit --always-recreate-deps",

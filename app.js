@@ -12,7 +12,7 @@ const app = express();
 const started = new Date();
 
 /**
- * Set  default process.env:s that are not set on startu up.
+ * Set  default process.env:s that are not set on start up.
  */
 defaultEnvs.set(true);
 
