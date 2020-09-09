@@ -10,7 +10,7 @@
     "url": "git://github.com/KTH/flottsbro-web.git"
   },
   "dependencies": {
-    "@kth/basic-html-templates": "^1.0.18",
+    "@kth/basic-html-templates": "^1.0.24",
     "@kth/http-responses": "^1.0.20",
     "@kth/in-memory-cache": "^0.1.14",
     "applicationinsights": "^1.8.6",
