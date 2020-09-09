@@ -3,7 +3,7 @@ const os = require("os");
 const { templates } = require("@kth/basic-html-templates");
 const httpResponse = require("@kth/http-responses");
 const about = require("./config/version");
-const logger = require("./modules/logger");
+const { log } = require("./modules/logger");
 const api = require("./modules/api");
 const { page, table, description } = require("./modules/templates/");
 const defaultEnvs = require("./modules/defaultEnvs");
@@ -12,7 +12,17 @@ const app = express();
 const started = new Date();
 
 /**
- * Set  default process.env:s that are not set on start up.
+ * Let the packages @kth/* use the Flottsbro log.
+ */
+httpResponse.setLogger(log);
+
+/**
+ * Process env:s that are not configured on start up, but accessed
+ * as envs in the application are added with there default values.
+ *
+ * They are also logged.
+ *
+ * This way you will always have a value for process.env.X
  */
 defaultEnvs.set(true);
 
@@ -20,7 +30,7 @@ defaultEnvs.set(true);
  * Start the server on configured port.
  */
 app.listen(process.env.PORT, function () {
-  logger.log.info(
+  log.info(
     `Started '${about.dockerName}:${
       about.dockerVersion
     }' on '${os.hostname()}:${process.env.PORT}'`
