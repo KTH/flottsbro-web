@@ -6,7 +6,7 @@ const about = require("./config/version");
 const { log } = require("./modules/logger");
 const api = require("./modules/api");
 const { page, table, description } = require("./modules/templates/");
-const defaultEnvs = require("./modules/defaultEnvs");
+const defaultEnvs = require("@kth/default-envs");
 const applicationInsights = require("./modules/applicationInsights");
 const app = express();
 const started = new Date();
@@ -24,7 +24,17 @@ httpResponse.setLogger(log);
  *
  * This way you will always have a value for process.env.X
  */
-defaultEnvs.set(true);
+defaultEnvs.set(
+  {
+    LOG_LEVEL: "info",
+    PORT: 3000,
+    PREFIX_PATH: "/pipeline",
+    API_HOST: "https://api.kth.se",
+    APPINSIGHTS_INSTRUMENTATIONKEY: "",
+    DISPLAY_APPS_IN_CLUSTER: "production",
+  },
+  log
+);
 
 /**
  * Start the server on configured port.
