@@ -66,18 +66,13 @@ const html = (applications) => {
       <div id="table">
         ${table.html(applications)}
       </div>
-    <div aria-live="polite" role="alert" class="alert alert-info">
-        <h2>Is something not working?</h2>
 
-        <p>Have a look at our list of our <a href="https://www.kthstatus.se/">services status
-        here</a> to see if they are working as intended. For more information about larger outages, please see the
-        <a href="https://www.kth.se/en/gemensamt/driftsinformation-webbtjanster/ug-rss">IT-Support pages</a>.
-        </p>
-    </div>
+      <p class="applications-deployed">Applications deployed: <i>${
+        applications.length
+      }</i></p>
 
     ${description.html(applications)}
 
-    <p>Applications deployed: <i>${applications.length}</i></p>
 
     <script>
     let ONE_MINUTE = 60 * 1000;

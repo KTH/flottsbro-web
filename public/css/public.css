@@ -46,6 +46,7 @@ a {
 }
 .alert {
   opacity: 0;
+  margin: 1rem 0;
 }
 
 .alert-info {
@@ -274,4 +275,8 @@ table#deployments.dataTable thead th, table#deployments.dataTable thead td {
   animation-name: changeFontSize;
   animation-iteration-count: infinite;
   animation-direction: alternate;
+}
+
+.applications-deployed {
+  color: #888;
 }
