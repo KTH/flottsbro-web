@@ -18,7 +18,7 @@ const getUrl = (application) => {
 const getDescriptionEnglish = (application) => {
   if (application.descriptionEnglish) {
     return `
-        <img src="https://app.kth.se/style/kth-style/img/kth-style/icons/en_UK.svg" />
+        <span class="icon en"></span>
         ${application.descriptionEnglish}
         `;
   }
@@ -28,8 +28,8 @@ const getDescriptionEnglish = (application) => {
 const getDescriptionSwedish = (application) => {
   if (application.descriptionEnglish) {
     return `
-        <img src="https://app.kth.se/style/kth-style/img/kth-style/icons/sv_SE.svg" />
-        ${application.descriptionSwedish}
+          <span class="icon sv"></span>
+          ${application.descriptionSwedish}
         `;
   }
   return ``;
@@ -80,7 +80,7 @@ const getDescriptionBlock = (application) => {
   if (application) {
     return `
     
-    <a name="${application.applicationName}"></a>
+    <a id="${application.applicationName}"></a>
 
     <div class="application">
       
