@@ -279,4 +279,6 @@ table#deployments.dataTable thead th, table#deployments.dataTable thead td {
 
 .applications-deployed {
   color: #888;
+  text-align: right;
+  margin: 0.5rem;
 }
