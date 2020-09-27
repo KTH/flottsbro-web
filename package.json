@@ -17,7 +17,7 @@
     "applicationinsights": "^1.8.7",
     "axios": "^0.20.0",
     "express": "^4.17.1",
-    "kth-node-log": "^3.1.0"
+    "kth-node-log": "^3.1.2"
   },
   "scripts": {
     "start": "CSS_URI='/pipeline/css/public.css' node app.js",
