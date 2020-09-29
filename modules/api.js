@@ -33,7 +33,7 @@ const getApplications = async () => {
  */
 const getUri = () => {
   const result = `${process.env.API_HOST}/api/pipeline/v1/latest/${process.env.DISPLAY_APPS_IN_CLUSTER}/`;
-  logger.log.debug(`Path  '${result}'.`);
+  logger.log.debug(`Path '${result}'.`);
   return result;
 };
 

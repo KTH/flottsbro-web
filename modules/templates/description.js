@@ -43,10 +43,10 @@ const getLiDocumentationUrl = (application) => {
   }
   if (application.publicUserDocumentationUrl) {
     return `
-        <div class="publicApiDocumentationUrl"><a href="${application.publicApiDocumentationUrl}">API documentation</a></div>
+        <div class="publicUserDocumentationUrl"><a href="${application.publicUserDocumentationUrl}">User documentation</a></div>
         `;
   }
-  return `<div class="publicUserDocumentationUrl"><a href="${application.publicUserDocumentationUrl}">User documentation</a></div>`;
+  return ``;
 };
 
 const getLiImportance = (application) => {
