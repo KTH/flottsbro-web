@@ -47,22 +47,46 @@ const html = (applications) => {
 
     <div class="row">
         <div class="col-sm">
-            <span class="importance high"></span><strong>High</strong> <span class="alert-info-text">- Actively monitored by operations
-            personal during office hours. Operations are on call until midnight. Action to bring back the service is
-            normally taken <strong>within 15 minutes during office hours</strong>, and within one hour during On call hours.</span><br /><br />
+
+          <div class="card">
+            <div class="card-header">
+              <span class="importance high"></span><strong>High</strong> 
+            </div>
+            <div class="card-body">
+              Actively monitored by operations
+              personal during office hours. Operations are on call until midnight. Action to bring back the service is
+              normally taken <strong>within 15 minutes during office hours</strong>, and within one hour during On call hours.
+            </div>
+          </div>
+
         </div>
-    <div class="col-sm">
-          <span class="importance medium"></span><strong>Medium</strong> <span class="alert-info-text">- Actively monitored by operations
-        personal during office hours. Action to bring back the service is normally <strong>within 2 hours</strong>. Outages outside
-        office hours are handled the following workday morning.</span><br /><br />
-    </div>
-    <div class="col-sm">
-      <span class="importance low"></span><strong>Low</strong> <span class="alert-info-text">- The service is normally back <strong>within a
-        day</strong>.</span><br /><br />
-    </div>
+        <div class="col-sm box">
+
+          <div class="card">
+            <div class="card-header">
+              <span class="importance medium"></span><strong>Medium</strong>
+            </div>
+            <div class="card-body">
+              Actively monitored by operations personal during office hours. Action to bring back the service is
+              normally <strong>within 2 hours</strong>. Outages outside office hours are handled the following workday morning.
+            </div>
+          </div>
+        </div>
+        <div class="col-sm box">
+
+          <div class="card">
+            <div class="card-header">
+            <span class="importance low"></span><strong>Low</strong> 
+            </div>
+            <div class="card-body">
+            The service is normally back <strong>within a day</strong>.
+            </div>
+          </div>
+        </div>
     
     </div>
 
+    <br />
       <div id="table">
         ${table.html(applications)}
       </div>
