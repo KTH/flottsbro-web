@@ -26,6 +26,7 @@ httpResponse.setLogger(log);
  */
 defaultEnvs.set(
   {
+    APPLICATION_NAME: "Flottsbro-web",
     LOG_LEVEL: "info",
     PORT: 3000,
     PREFIX_PATH: "/pipeline",
