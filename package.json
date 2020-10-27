@@ -15,7 +15,7 @@
     "@kth/http-responses": "^1.0.26",
     "@kth/in-memory-cache": "^0.1.15",
     "applicationinsights": "^1.8.7",
-    "axios": "^0.20.0",
+    "axios": "^0.21.0",
     "express": "^4.17.1",
     "kth-node-log": "^3.1.3"
   },
