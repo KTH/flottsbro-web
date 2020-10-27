@@ -12,7 +12,7 @@
   "dependencies": {
     "@kth/basic-html-templates": "^1.0.27",
     "@kth/default-envs": "^0.0.9",
-    "@kth/http-responses": "^1.0.26",
+    "@kth/http-responses": "^1.0.27",
     "@kth/in-memory-cache": "^0.1.15",
     "applicationinsights": "^1.8.7",
     "axios": "^0.21.0",
