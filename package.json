@@ -14,7 +14,7 @@
     "@kth/default-envs": "^0.0.10",
     "@kth/http-responses": "^1.0.27",
     "@kth/in-memory-cache": "^0.1.16",
-    "applicationinsights": "^1.8.7",
+    "applicationinsights": "^1.8.8",
     "axios": "^0.21.0",
     "express": "^4.17.1",
     "kth-node-log": "^3.1.3"
