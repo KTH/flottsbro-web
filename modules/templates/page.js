@@ -139,7 +139,7 @@ const html = (applications) => {
 
   </script>
 
-  <p>Read more about <a href="https://www.kth.se/it/tjansteutbud/beredskap-1.681065"> KTH´s on call policy (In
+  <p>Read more about <a href="https://intra.kth.se/ita/tjansteutbud/beredskap-1.681065"> KTH´s on call policy (In
         Swedish)</a>.</p>
 
 
