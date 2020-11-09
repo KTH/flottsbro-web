@@ -4,6 +4,7 @@ services:
 
   web:
     image: $LOCAL_IMAGE_ID
+    tty: true
     
     ports:
       - 3000
