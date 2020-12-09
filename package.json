@@ -11,9 +11,9 @@
   },
   "dependencies": {
     "@kth/basic-html-templates": "^1.0.32",
-    "@kth/default-envs": "^0.0.10",
-    "@kth/http-responses": "^1.0.29",
-    "@kth/in-memory-cache": "^0.1.17",
+    "@kth/default-envs": "^0.0.13",
+    "@kth/http-responses": "^1.0.31",
+    "@kth/in-memory-cache": "^0.1.18",
     "applicationinsights": "^1.8.8",
     "axios": "^0.21.0",
     "express": "^4.17.1",
@@ -27,11 +27,12 @@
   "scripts": {
     "start": "CSS_URI='/pipeline/css/public.css' node app.js",
     "start-dev": "LOG_LEVEL='debug' CSS_URI='/pipeline/css/public.css' nodemon app.js",
-    "clean": "rm -r ./node_modules && rm package-lock.json",
+    "clean": "rm -rf ./node_modules && rm package-lock.json",
     "test": "NODE_ENV=development node_modules/mocha/bin/mocha ./tests/unit-tests/test-*.js",
     "test-integration": "URL_PREFIX=http://localhost:3000/pipeline ./tests/integration-tests/basic.sh",
     "test-integration-in-docker": "ID=$(docker build -q .) && LOCAL_IMAGE_ID=$ID docker-compose -f docker-compose-integration-tests.yml build && LOCAL_IMAGE_ID=$ID docker-compose -f docker-compose-integration-tests.yml up --force-recreate --abort-on-container-exit --always-recreate-deps",
-    "test-unit-in-docker": "ID=$(docker build -q .) && LOCAL_IMAGE_ID=$ID docker-compose -f docker-compose-unit-tests.yml up --abort-on-container-exit --always-recreate-deps"
+    "test-unit-in-docker": "ID=$(docker build -q .) && LOCAL_IMAGE_ID=$ID docker-compose -f docker-compose-unit-tests.yml up --abort-on-container-exit --always-recreate-deps",
+    "package-update": "git pull && npm run clean & ncu -u && npm install && npm audit fix && npm test"
   },
   "engines": {
     "node": "^12.14.0"
