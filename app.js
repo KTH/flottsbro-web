@@ -46,6 +46,9 @@ app.listen(process.env.PORT, function () {
       about.dockerVersion
     }' on '${os.hostname()}:${process.env.PORT}'`
   );
+  if (process.env.API_KEY === undefined) {
+    log.fatal("No env API_KEY passed to use for read flottsbro-api.");
+  }
   applicationInsights.init();
 });
 
@@ -77,13 +80,13 @@ app.get(`${process.env.PREFIX_PATH}/table`, async function (request, response) {
 /**
  * Data page.
  */
-app.get(`${process.env.PREFIX_PATH}/description`, async function (
-  request,
-  response
-) {
-  const applications = await api.getApplications();
-  httpResponse.ok(request, response, description.html(applications));
-});
+app.get(
+  `${process.env.PREFIX_PATH}/description`,
+  async function (request, response) {
+    const applications = await api.getApplications();
+    httpResponse.ok(request, response, description.html(applications));
+  }
+);
 
 /**
  * About page. Versions and such.

@@ -15,7 +15,11 @@ const getApplications = async () => {
 
   try {
     logger.log.debug(`Calling api endpoint '${getUri()}'.`);
-    const response = await axios.get(getUri());
+    const response = await axios.get(getUri(), {
+      headers: {
+        api_key: process.env.API_KEY,
+      },
+    });
     result = await response.data;
     if (result == null) {
       result = [];
