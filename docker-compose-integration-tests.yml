@@ -4,6 +4,9 @@ services:
 
   web:
     image: $LOCAL_IMAGE_ID
+    environment: 
+      - API_KEY
+      
     tty: true
     
     ports:
@@ -11,3 +14,4 @@ services:
 
   integration-tests:
     build: ./tests/integration-tests
+    
