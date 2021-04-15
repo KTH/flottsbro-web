@@ -13,7 +13,7 @@
     "@kth/basic-html-templates": "^1.0.32",
     "@kth/default-envs": "^0.0.13",
     "@kth/http-responses": "^1.0.31",
-    "@kth/in-memory-cache": "^0.1.18",
+    "@kth/in-memory-cache": "^0.1.27",
     "applicationinsights": "^1.8.8",
     "axios": "^0.21.0",
     "express": "^4.17.1",
