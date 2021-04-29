@@ -1,0 +1,64 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "04:00"
+  open-pull-requests-limit: 10
+  labels:
+  - dependencies
+  - dependabot
+  ignore:
+  - dependency-name: "@kth/http-responses"
+    versions:
+    - 1.0.38
+    - 1.0.39
+    - 1.0.40
+    - 1.0.41
+    - 1.0.42
+    - 1.0.43
+    - 1.0.44
+    - 1.0.45
+    - 1.0.46
+    - 1.0.47
+    - 1.0.48
+  - dependency-name: kth-node-log
+    versions:
+    - 3.1.4
+  - dependency-name: "@kth/in-memory-cache"
+    versions:
+    - 0.1.19
+    - 0.1.20
+    - 0.1.21
+    - 0.1.22
+    - 0.1.23
+    - 0.1.24
+    - 0.1.25
+    - 0.1.26
+  - dependency-name: "@kth/basic-html-templates"
+    versions:
+    - 1.0.35
+    - 1.0.36
+    - 1.0.37
+    - 1.0.38
+    - 1.0.39
+    - 1.0.40
+    - 1.0.41
+  - dependency-name: mocha
+    versions:
+    - 8.3.0
+    - 8.3.1
+  - dependency-name: chai
+    versions:
+    - 4.3.0
+    - 4.3.1
+    - 4.3.2
+    - 4.3.3
+  - dependency-name: "@kth/default-envs"
+    versions:
+    - 0.0.14
+    - 0.0.15
+  - dependency-name: applicationinsights
+    versions:
+    - 1.8.9
