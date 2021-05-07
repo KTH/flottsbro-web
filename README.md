@@ -1,4 +1,4 @@
-# Continuous Delivery Deployments
+# Continuous Delivery Deployments ![Continous Integration](https://github.com/KTH/flottsbro-web/actions/workflows/main.yml/badge.svg)
 
 Display information about applications deployed in our clusters.
 
