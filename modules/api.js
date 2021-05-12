@@ -7,8 +7,10 @@ const logger = require("./logger");
 const CACHE_TTL = 30 * 1000; // 30 seconds
 
 const getApplications = async () => {
-  let result = cache.get(getUri());
-  if (result) {
+  let result = [];
+  let cachedResult = cache.get(getUri());
+  if (cachedResult) {
+    result = cachedResult;
     logger.log.debug(`Using cached json resonse for '${getUri()}'.`);
     return result;
   }
@@ -21,9 +23,6 @@ const getApplications = async () => {
       },
     });
     result = await response.data;
-    if (result == null) {
-      result = [];
-    }
     cache.add(getUri(), result, CACHE_TTL);
   } catch (error) {
     logger.log.error(error);
