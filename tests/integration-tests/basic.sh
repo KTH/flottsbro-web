@@ -52,7 +52,6 @@ expectPathToContain() {
 # ---------------- Tests ----------------
 
 expectPathToContain "/" "Incident response priorities" "Index should contain title."
-expectPathToContain "/" "Continuous Delivery Reference Application" "Index should contain Continuous Delivery Reference Application application data."
 expectPathToContain "/_monitor" "APPLICATION_STATUS: OK" "Default check APPLICATION_STATUS: OK"
 expectPathToContain "/_about" "Docker image" "The about page should show Docker images information"
 expectPathToContain "/" "Application" "The index pages should include a title"
