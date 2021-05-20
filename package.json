@@ -17,7 +17,7 @@
     "applicationinsights": "^2.0.0",
     "axios": "^0.21.1",
     "express": "^4.17.1",
-    "kth-node-log": "^3.1.5"
+    "kth-node-log": "^3.1.6"
   },
   "devDependencies": {
     "chai": "^4.3.4",
