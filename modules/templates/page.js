@@ -43,7 +43,7 @@ const html = (applications) => {
     <a name="importance"></a>
     <p id="lead">
         The coloured circles indicates how fast the Operations or Support team start working on the service incase of an outage.
-        You can see each service classification bellow.
+        You can see each service classification below.
 
     <div class="row">
         <div class="col-sm">
