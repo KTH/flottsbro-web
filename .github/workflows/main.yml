@@ -16,9 +16,15 @@
 ####################################################################################################################################
 name: Evolene CI
 
-on:
+on:  
   push:
-    branches: [master]
+  pull_request:
+    branches:
+      - master
+      - main
+    paths-ignore:
+          - '*.md'
+          - '*.png'
   workflow_dispatch:
 
 jobs:
@@ -26,7 +32,7 @@ jobs:
     name: Continuous Integration
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v2.3.4
       - name: Build, Test and Push with Evolene
         run: |
           SLACK_CHANNELS=#team-pipeline-build \
